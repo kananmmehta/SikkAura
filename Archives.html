@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Serif%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>Monastery Archives - SikkAura</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        .fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .monastery-card {
+            transition: all 0.3s ease;
+        }
+        .monastery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(242, 166, 13, 0.3);
+        }
+        .monastery-image {
+            transition: transform 0.5s ease;
+        }
+        .monastery-card:hover .monastery-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="bg-[#fcfbf8]">
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden" style='font-family: "Noto Sans", sans-serif;'>
+        
+        <!-- Header -->
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f4efe7] px-10 py-4">
+            <div class="flex items-center gap-3 text-[#1c170d]">
+                <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
+                <h2 class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">CodeMonks</h2>
+            </div>
+            <div class="flex items-center gap-8">
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#1c170d]">
+                    <a class="hover:text-[#f2a60d] transition-colors" href="Events.html">Events</a>
+                    <a class="hover:text-[#f2a60d] transition-colors" href="Archives.html">Monuments</a>
+                    <a class="hover:text-[#f2a60d] transition-colors font-bold text-[#f2a60d]" href="Archives.html">Monasteries</a>
+                    <a class="hover:text-[#f2a60d] transition-colors" href="#">360° Views</a>
+                    <a class="hover:text-[#f2a60d] transition-colors" href="Accommodations.html">Accommodations</a>
+                </nav>
+                <div class="flex items-center gap-2">
+                    <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
+                        <span class="material-symbols-outlined">language</span>
+                    </button>
+                    <button class="ml-2">
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg");'></div>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="relative h-[400px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUjOUkL00GcQwfkA-FEUc_EAA8WarfTwbW_QZBtU7cIJXo8pBQxUrhWyA8biBVPXCprTQSztTYvJD0bGcif3dLVb579tUq3taeZWwJoN-Dj1w5foya1rVfhqN2GwkyFrW4DIAisnI3EthGdWDvm-mGjdFyEAPjm3goh2Ey3H4VRtkySULK5ZEQ7iPJ5yEZFoQNYdiI05coFNgd16bdhQsUnuh95D6kU-5XaKWOdwLTpMrTovlUI8hww7SILPbGt25DFjHiam0jWw" alt="Sikkim monasteries landscape" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/50"></div>
+            </div>
+            
+            <div class="relative z-10 text-center text-white px-4">
+                <h1 class="text-4xl md:text-5xl font-bold font-serif mb-4">
+                    Monastery Archives
+                </h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto">
+                    Discover the spiritual heritage of Sikkim through its sacred monasteries
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="flex-1 px-4 md:px-20 lg:px-40 py-12">
+            <!-- Search Section -->
+            <div class="max-w-4xl mx-auto mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-[#f4efe7]">
+                    <h2 class="text-2xl font-bold font-serif mb-6 text-center text-[#1c170d]">
+                        Search Monasteries
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Search Bar -->
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-500">search</span>
+                            <input
+                                type="text"
+                                id="searchInput"
+                                placeholder="Search by name, location, or tradition..."
+                                class="w-full pl-10 pr-4 h-12 text-base border border-[#f4efe7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f2a60d] focus:border-transparent"
+                            />
+                        </div>
+
+                        <!-- Filter Buttons -->
+                        <div class="flex flex-wrap gap-2 justify-center" id="filterButtons">
+                            <button class="tradition-filter active px-4 py-2 rounded-full text-sm font-medium transition-colors bg-[#f2a60d] text-[#1c170d]" data-tradition="all">
+                                All Traditions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-6">
+                    <p class="text-stone-600" id="resultsCount"></p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="monasteryGrid">
+                    <!-- Monastery cards will be inserted here by JavaScript -->
+                </div>
+
+                <!-- No Results -->
+                <div class="text-center py-12 hidden" id="noResults">
+                    <div class="text-stone-600 mb-4">
+                        <span class="material-symbols-outlined text-5xl mb-4 block">search_off</span>
+                        <h3 class="text-xl font-semibold mb-2">No monasteries found</h3>
+                        <p>Try adjusting your search terms or filters</p>
+                    </div>
+                    <button 
+                        class="px-6 py-2 border border-[#f2a60d] text-[#f2a60d] rounded-full hover:bg-[#f2a60d] hover:text-[#1c170d] transition-colors"
+                        onclick="clearFilters()"
+                    >
+                        Clear Filters
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-solid border-t-[#f4efe7]">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 py-10">
+                    <div class="flex items-center gap-3 text-[#1c170d]">
+                        <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
+                        <h2 class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">CodeMonks</h2>
+                    </div>
+                    <nav class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm font-medium text-stone-600">
+                        <a class="hover:text-[#f2a60d] transition-colors" href="#">About Us</a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="#">Contact</a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="#">Privacy Policy</a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="#">Terms of Service</a>
+                    </nav>
+                    <div class="flex items-center gap-4 text-stone-500">
+                        <a class="hover:text-[#f2a60d] transition-colors" href="#">
+                            <svg class="feather feather-twitter" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="#">
+                            <svg class="feather feather-facebook" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="#">
+                            <svg class="feather feather-instagram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="py-6 text-center text-sm text-stone-500 border-t border-solid border-t-[#f4efe7]">
+                    <p>© 2025 CodeMonks. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Monastery data - Updated with accurate information from official sources
+        const monasteries = [
+            {
+                id: 1,
+                name: "Rumtek Monastery",
+                location: "23 km from Gangtok, East Sikkim",
+                founded: "16th century",
+                tradition: "Karma Kagyu",
+                description: "One of the most significant and largest monasteries in Sikkim, founded by Wangchuk Dorje, 9th Karmapa Lama. Originally called the Dharma Chakra Centre, it was established to spread the teachings of Buddha throughout the world.",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDfThHDOXm1RBqzYl-ZZB2TxAA_PeaVZ797Uce3dps3DHEd7v4n7FTnY8b8RvihKuswk6WDnS0Hls3eG6YK0sv8UWD8btSKF1Ah-0SzH0Klhp-RQTDJoUT-c_2EngJuTC08jIFUCDHEd8ERaaqU38Baa-McaIhsDUELVAGg1Ix-ZC3EOprl3L5NoM0vYqFlK3Bd1F8WOh1Zxm3fjNlxoIlI2uX0x_-wA4tU7tU58kfT4P2vf9lZbJuTAv27kwfAyPlZdy-v11pfIg",
+                altitude: "5,800 ft",
+                significance: "Seat of the Karma Kagyu lineage",
+                features: ["Golden Stupa", "16th Karmapa Sculptures", "Traditional Tibetan Architecture", "Monastic College", "4-year Retreat Center"]
+            },
+            {
+                id: 2,
+                name: "Pemayangtse Monastery",
+                location: "2 km from Pelling, West Sikkim",
+                founded: "1705",
+                tradition: "Nyingma",
+                description: "The word Pemayangtse means 'Perfect Sublime Lotus'. This 300-year-old monastery is the second oldest in Sikkim and offers a meditative environment quietly set amidst woods with stunning Himalayan views.",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDfSkJgh7Va_s5kFRgthRa9d0VsKlT7IiaZ96Mp1povzd8qYkt-baNdy-RzV85m3r2263Y6tZbgNUq2FBHUyRetdkmEcwtmfKFP9BChZ0UqFXOrsbwFkBK8BEUkIXq_qOfn6bvzAJDvDKVI_VWuUdEpVk9eNac1BikMqY4Z1RKCXska9DGYGYUi8Sg7avL4fFivO7-e_WpTgv99kj2aZZgvhtoZsgxw5hfOw9OfiBzqGegW3PzotAsT_XhAlF6M_drv0VAcr7ceiw",
+                altitude: "6,840 ft",
+                significance: "Second Oldest Monastery in Sikkim",
+                features: ["Three Storied Building", "Padmasambhava Statues", "Antique Idols", "Traditional Tibetan Paintings", "Rabdantse Ruins View"]
+            },
+            {
+                id: 3,
+                name: "Tashiding Monastery",
+                location: "Between Rangit & Rathong Rivers, West Sikkim",
+                founded: "17th century (1641)",
+                tradition: "Nyingma",
+                description: "Built on top of a hill between two beautiful rivers, this monastery is believed to cleanse every sin of those seeking forgiveness. One of the oldest Buddhist monasteries in Sikkim with serene ambiance.",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCPnrUKs9hwSLsVBbbyNuDdxVBbe8EvF5-Hj8CVzmxeiDX3XhPSEU39cf65qWV1nBhoXvWUctMNCkShzzzh6U3IWTznmTwilaCi2MGIivWs2_mq37bxJTN6STAd05jwPjz_d9gwbWTYtoU4I4HcfM1OH-ayYZ4wjUwgC4-XyTZdayzdq1SelTh368WNcmTeO14HbwYDs4kB4-Eiqnp1ZRrctYlsYV9SAGTgg2tmOLQNHqR01YIj1RHe9GgTWb7dXwTH1fnkqOoEvA",
+                altitude: "4,200 ft",
+                significance: "Sacred Heart of Sikkim - Sin Cleansing",
+                features: ["Bumchu Festival", "Sacred Water Ceremony", "Prayer Flags", "Holy Stupas", "60-70 Monks"]
+            },
+            {
+                id: 4,
+                name: "Enchey Monastery",
+                location: "3 km north-east of Gangtok, East Sikkim",
+                founded: "1909-1910",
+                tradition: "Nyingma",
+                description: "Meaning 'the solitary temple', this 200-year-old monastery was built by Lama Druptob Karpo who had flying powers. Renovated in Chinese pagoda style during Sidkeong Tulku's reign.",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDfThHDOXm1RBqzYl-ZZB2TxAA_PeaVZ797Uce3dps3DHEd7v4n7FTnY8b8RvihKuswk6WDnS0Hls3eG6YK0sv8UWD8btSKF1Ah-0SzH0Klhp-RQTDJoUT-c_2EngJuTC08jIFUCDHEd8ERaaqU38Baa-McaIhsDUELVAGg1Ix-ZC3EOprl3L5NoM0vYqFlK3Bd1F8WOh1Zxm3fjNlxoIlI2uX0x_-wA4tU7tU58kfT4P2vf9lZbJuTAv27kwfAyPlZdy-v11pfIg",
+                altitude: "6,200 ft",
+                significance: "Guardian Monastery of Gangtok",
+                features: ["Cham Dance", "Chinese Pagoda Style", "90 Monks", "Wheel of Law", "Tantric Murals"]
+            },
+            {
+                id: 5,
+                name: "Dubdi Monastery",
+                location: "3 km from Yuksom, West Sikkim",
+                founded: "1701",
+                tradition: "Nyingma",
+                description: "The oldest monastery in Sikkim, also known as Yuksom Monastery or 'the retreat'. Built during the reign of Chogyal Namgyal amidst thick chestnut forest with panoramic mountain views.",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDfSkJgh7Va_s5kFRgthRa9d0VsKlT7IiaZ96Mp1povzd8qYkt-baNdy-RzV85m3r2263Y6tZbgNUq2FBHUyRetdkmEcwtmfKFP9BChZ0UqFXOrsbwFkBK8BEUkIXq_qOfn6bvzAJDvDKVI_VWuUdEpVk9eNac1BikMqY4Z1RKCXska9DGYGYUi8Sg7avL4fFivO7-e_WpTgv99kj2aZZgvhtoZsgxw5hfOw9OfiBzqGegW3PzotAsT_XhAlF6M_drv0VAcr7ceiw",
+                altitude: "2,100 meters (6,890 ft)",
+                significance: "Oldest Monastery in Sikkim",
+                features: ["Two Storied Stone Structure", "Divinities Images", "Ancient Manuscripts", "Gyaltshen Dome", "Historical Significance"]
+            },
+            {
+                id: 6,
+                name: "Phensang Monastery",
+                location: "Gangtok area, North Sikkim",
+                founded: "1721",
+                tradition: "Nyingma",
+                description: "Founded by 3rd Lhatsun Jigmed Pawo, this is amongst the largest monasteries in Sikkim with the highest number of monks. Rebuilt multiple times after fire and rain damage but restored each time.",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCPnrUKs9hwSLsVBbbyNuDdxVBbe8EvF5-Hj8CVzmxeiDX3XhPSEU39cf65qWV1nBhoXvWUctMNCkShzzzh6U3IWTznmTwilaCi2MGIivWs2_mq37bxJTN6STAd05jwPjz_d9gwbWTYtoU4I4HcfM1OH-ayYZ4wjUwgC4-XyTZdayzdq1SelTh368WNcmTeO14HbwYDs4kB4-Eiqnp1ZRrctYlsYV9SAGTgg2tmOLQNHqR01YIj1RHe9GgTWb7dXwTH1fnkqOoEvA",
+                altitude: "5,500 ft",
+                significance: "Largest Monastery by Monk Population",
+                features: ["300 Lamas", "Sacred New Year Dance", "Rebuilt Heritage", "Nyingmapa Order", "Mountain Location"]
+            },
+            {
+                id: 7,
+                name: "Phodang Monastery",
+                location: "Magan area, North Sikkim",
+                founded: "1740",
+                tradition: "Kagyu",
+                description: "Founded by the fourth King Gyurmed Namgyalm, this monastery houses around 260 monks of the Kagyu lineage. The walls are adorned with beautiful murals, paintings, and frescos.",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDfThHDOXm1RBqzYl-ZZB2TxAA_PeaVZ797Uce3dps3DHEd7v4n7FTnY8b8RvihKuswk6WDnS0Hls3eG6YK0sv8UWD8btSKF1Ah-0SzH0Klhp-RQTDJoUT-c_2EngJuTC08jIFUCDHEd8ERaaqU38Baa-McaIhsDUELVAGg1Ix-ZC3EOprl3L5NoM0vYqFlK3Bd1F8WOh1Zxm3fjNlxoIlI2uX0x_-wA4tU7tU58kfT4P2vf9lZbJuTAv27kwfAyPlZdy-v11pfIg",
+                altitude: "4,500 ft",
+                significance: "Royal Foundation - Kagyu Sect",
+                features: ["260 Monks", "Beautiful Murals", "Royal Heritage", "Frescos & Paintings", "Kagyu Lineage"]
+            },
+            {
+                id: 8,
+                name: "Lachen Monastery",
+                location: "Lachen Village, North Sikkim",
+                founded: "1858",
+                tradition: "Nyingma",
+                description: "Also known as Ngodub Choling or Launching Gompa, originally built by 8 monks who transformed a small hut constructed by Lama Karchen Dorje Drak. Offers spell-binding views overlooking the village.",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCPnrUKs9hwSLsVBbbyNuDdxVBbe8EvF5-Hj8CVzmxeiDX3XhPSEU39cf65qWV1nBhoXvWUctMNCkShzzzh6U3IWTznmTwilaCi2MGIivWs2_mq37bxJTN6STAd05jwPjz_d9gwbWTYtoU4I4HcfM1OH-ayYZ4wjUwgC4-XyTZdayzdq1SelTh368WNcmTeO14HbwYDs4kB4-Eiqnp1ZRrctYlsYV9SAGTgg2tmOLQNHqR01YIj1RHe9GgTWb7dXwTH1fnkqOoEvA",
+                altitude: "8,610 ft",
+                significance: "High Altitude Monastery",
+                features: ["Guru Padmasambhava Statue", "Prayer Flags", "Prayer Wheels", "Village Overlook", "8 Founding Monks"]
+            }
+        ];
+
+        // State
+        let searchQuery = '';
+        let selectedTradition = 'all';
+        let filteredMonasteries = [...monasteries];
+
+        // Get unique traditions
+        const traditions = [...new Set(monasteries.map(m => m.tradition))];
+
+        // Initialize the page
+        function init() {
+            createFilterButtons();
+            renderMonasteries();
+            setupEventListeners();
+        }
+
+        // Create filter buttons
+        function createFilterButtons() {
+            const filterContainer = document.getElementById('filterButtons');
+            
+            // Add tradition filter buttons
+            traditions.forEach(tradition => {
+                const button = document.createElement('button');
+                button.className = 'tradition-filter px-4 py-2 rounded-full text-sm font-medium transition-colors border border-[#f2a60d] text-[#f2a60d] hover:bg-[#f2a60d] hover:text-[#1c170d]';
+                button.textContent = tradition;
+                button.dataset.tradition = tradition;
+                filterContainer.appendChild(button);
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search input
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                filterMonasteries();
+            });
+
+            // Filter buttons
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('tradition-filter')) {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.tradition-filter').forEach(btn => {
+                        btn.classList.remove('active', 'bg-[#f2a60d]', 'text-[#1c170d]');
+                        btn.classList.add('border', 'border-[#f2a60d]', 'text-[#f2a60d]');
+                    });
+                    
+                    // Add active class to clicked button
+                    e.target.classList.add('active', 'bg-[#f2a60d]', 'text-[#1c170d]');
+                    e.target.classList.remove('border', 'border-[#f2a60d]', 'text-[#f2a60d]');
+                    
+                    selectedTradition = e.target.dataset.tradition;
+                    filterMonasteries();
+                }
+            });
+        }
+
+        // Filter monasteries
+        function filterMonasteries() {
+            filteredMonasteries = monasteries.filter(monastery => {
+                const matchesSearch = monastery.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                   monastery.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                   monastery.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                   monastery.tradition.toLowerCase().includes(searchQuery.toLowerCase());
+                
+                const matchesTradition = selectedTradition === 'all' || monastery.tradition === selectedTradition;
+                
+                return matchesSearch && matchesTradition;
+            });
+            
+            renderMonasteries();
+        }
+
+        // Render monasteries
+        function renderMonasteries() {
+            const grid = document.getElementById('monasteryGrid');
+            const resultsCount = document.getElementById('resultsCount');
+            const noResults = document.getElementById('noResults');
+
+            // Update results count
+            const count = filteredMonasteries.length;
+            const countText = `Found ${count} ${count === 1 ? 'monastery' : 'monasteries'}${searchQuery ? ` matching "${searchQuery}"` : ''}`;
+            resultsCount.textContent = countText;
+
+            if (count === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+
+            // Generate monastery cards
+            grid.innerHTML = filteredMonasteries.map(monastery => `
+                <div class="monastery-card bg-white rounded-lg shadow-lg overflow-hidden border border-[#f4efe7]">
+                    <div class="h-64 overflow-hidden">
+                        <img
+                            src="${monastery.image}"
+                            alt="${monastery.name}"
+                            class="monastery-image w-full h-full object-cover"
+                        />
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <h3 class="text-xl font-bold font-serif text-[#1c170d]">
+                                ${monastery.name}
+                            </h3>
+                            <span class="bg-[#f2a60d]/10 text-[#f2a60d] px-2 py-1 rounded-full text-sm font-medium">
+                                ${monastery.tradition}
+                            </span>
+                        </div>
+                        
+                        <div class="space-y-3 mb-4">
+                            <div class="flex items-center gap-2 text-stone-600">
+                                <span class="material-symbols-outlined text-sm">location_on</span>
+                                <span class="text-sm">${monastery.location} • ${monastery.altitude}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-stone-600">
+                                <span class="material-symbols-outlined text-sm">calendar_today</span>
+                                <span class="text-sm">Founded in ${monastery.founded}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-stone-600">
+                                <span class="material-symbols-outlined text-sm">group</span>
+                                <span class="text-sm">${monastery.significance}</span>
+                            </div>
+                        </div>
+                        
+                        <p class="text-stone-600 text-sm mb-4 leading-relaxed">
+                            ${monastery.description}
+                        </p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-[#1c170d] mb-2">Key Features:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${monastery.features.map(feature => `
+                                    <span class="bg-[#f4efe7] text-[#1c170d] px-2 py-1 rounded text-xs">
+                                        ${feature}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <button class="w-full px-4 py-2 border border-[#f2a60d] text-[#f2a60d] rounded-lg hover:bg-[#f2a60d] hover:text-[#1c170d] transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Clear filters function
+        function clearFilters() {
+            searchQuery = '';
+            selectedTradition = 'all';
+            document.getElementById('searchInput').value = '';
+            
+            // Reset filter buttons
+            document.querySelectorAll('.tradition-filter').forEach(btn => {
+                btn.classList.remove('active', 'bg-[#f2a60d]', 'text-[#1c170d]');
+                btn.classList.add('border', 'border-[#f2a60d]', 'text-[#f2a60d]');
+            });
+            
+            // Set "All Traditions" as active
+            const allButton = document.querySelector('[data-tradition="all"]');
+            allButton.classList.add('active', 'bg-[#f2a60d]', 'text-[#1c170d]');
+            allButton.classList.remove('border', 'border-[#f2a60d]', 'text-[#f2a60d]');
+            
+            filterMonasteries();
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

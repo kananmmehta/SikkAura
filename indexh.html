@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+  <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Serif:wght@400;700;900&family=Noto+Sans:wght@400;700;900" onload="this.rel='stylesheet'" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <title>SikkAura</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style type="text/tailwindcss">
+    .carousel-item {
+      scroll-snap-align: start;
+      flex: 0 0 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .carousel-item.active {
+      opacity: 1;
+    }
+    .carousel-container {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      overflow-x: scroll;
+    }
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    .span img {
+      height: 100px;
+    }
+  </style>
+</head>
+<body class="bg-[#fcfbf8]">
+  <div class="relative flex min-h-screen flex-col overflow-x-hidden" style='font-family: "Noto Sans", sans-serif;'>
+    <div class="fixed inset-0 -z-10">
+      <img alt="Background image of a serene Sikkim landscape with misty mountains." class="size-full object-cover"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUjOUkL00GcQwfkA-FEUc_EAA8WarfTwbW_QZBtU7cIJXo8pBQxUrhWyA8biBVPXCprTQSztTYvJD0bGcif3dLVb579tUq3taeZWwJoN-Dj1w5foya1rVfhqN2GwkyFrW4DIAisnI3EthGdWDvm-mGjdFyEAPjm3goh2Ey3H4VRtkySULK5ZEQ7iPJ5yEZFoQNYdiI05coFNgd16bdhQsUnuh95D6kU-5XaKWOdwLTpMrTovlUI8hww7SILPbGt25DFjHiam0jWw" />
+      <div class="absolute inset-0 bg-[#fcfbf8]/80 backdrop-blur-sm"></div>
+    </div>
+    <div class="layout-container flex h-full grow flex-col">
+      <header class="flex items-center justify-between whitespace-nowrap border-b border-b-[#f4efe7] px-10 py-4">
+        <div class="flex items-center gap-3 text-[#1c170d]">
+          <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
+          <h2 id="navTitle" class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">CodeMonks</h2>
+        </div>
+        <div class="flex items-center gap-8">
+          <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#1c170d]">
+            <a href="Events.html" id="navEvents" class="hover:text-[#f2a60d]">Events</a>
+            <a href="Archives.html" id="navArchives" class="hover:text-[#f2a60d]">Archives</a>
+            <a href="Monasteries.html" id="navMonasteries" class="hover:text-[#f2a60d]">Monasteries</a>
+            <a href="#" id="nav360" class="hover:text-[#f2a60d]">360° Views</a>
+            <a href="Accommodations.html" id="navAccommodations" class="hover:text-[#f2a60d]">Accommodations</a>
+          </nav>
+          <div class="flex items-center gap-2">
+            <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors" aria-label="Search">
+              <span class="material-symbols-outlined">search</span>
+            </button>
+            <button id="langSwitch" class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors" aria-label="Language">
+              <span class="material-symbols-outlined">language</span>
+            </button>
+            <button class="ml-2">
+              <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                style='background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg");'></div>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main class="flex-1">
+        <div class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-7xl flex-1">
+            <div class="@container">
+              <div class="@[480px]:p-4">
+                <!-- Hero Section -->
+                <div class="relative flex min-h-[730px] rounded-2xl overflow-hidden">
+                  <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                    <source src="assets/videos/Aura.mp4" type="video/mp4">
+                  </video>
+                  <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/50"></div>
+                  <div class="relative z-10 flex flex-col items-center justify-center text-center gap-6 p-8 w-full">
+                    <h1 id="heroTitle" class="text-white text-4xl font-black leading-tight tracking-tighter @[480px]:text-6xl font-serif">
+                      Explore the Mystical Beauty of Sikkim
+                    </h1>
+                    <p id="heroSubtitle" class="text-white/90 text-lg font-normal leading-relaxed max-w-2xl">
+                      Discover the serene landscapes, vibrant culture, and spiritual heritage of Sikkim. Plan your unforgettable journey with us.
+                    </p>
+                    <button id="planTripBtn"
+                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-[#f2a60d] text-[#1c170d] text-base font-bold leading-normal tracking-wide hover:bg-amber-400 transition-all shadow-lg shadow-black/20">
+                      <span>Plan Your Trip</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- More content like Featured Destinations, etc. -->
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="border-t border-solid border-t-[#f4efe7]">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8 py-10">
+            <div class="flex items-center gap-3 text-[#1c170d]">
+              <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
+              <h2 id="footerTitle" class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">CodeMonks</h2>
+            </div>
+            <nav class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm font-medium text-stone-600">
+              <a id="footerAbout" class="hover:text-[#f2a60d] transition-colors" href="#">About Us</a>
+              <a id="footerContact" class="hover:text-[#f2a60d] transition-colors" href="#">Contact</a>
+              <a id="footerPrivacy" class="hover:text-[#f2a60d] transition-colors" href="#">Privacy Policy</a>
+              <a id="footerTerms" class="hover:text-[#f2a60d] transition-colors" href="#">Terms of Service</a>
+            </nav>
+            <div class="flex items-center gap-4 text-stone-500">
+              <!-- Social Media Icons -->
+            </div>
+          </div>
+          <div class="py-6 text-center text-sm text-stone-500 border-t border-solid border-t-[#f4efe7]">
+            <span id="footerText">© 2025 CodeMonks. All rights reserved.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+    const translations = {
+      en: {
+        navTitle: "CodeMonks",
+        navEvents: "Events",
+        navArchives: "Archives",
+        navMonasteries: "Monasteries",
+        nav360: "360° Views",
+        navAccommodations: "Accommodations",
+        heroTitle: "Explore the Mystical Beauty of Sikkim",
+        heroSubtitle: "Discover the serene landscapes, vibrant culture, and spiritual heritage of Sikkim. Plan your unforgettable journey with us.",
+        planTripBtn: "Plan Your Trip",
+        footerTitle: "CodeMonks",
+        footerAbout: "About Us",
+        footerContact: "Contact",
+        footerPrivacy: "Privacy Policy",
+        footerTerms: "Terms of Service",
+        footerText: "© 2025 CodeMonks. All rights reserved."
+      },
+      hi: {
+        navTitle: "कोडमोंक्स",
+        navEvents: "इवेंट्स",
+        navArchives: "आर्काइव्स",
+        navMonasteries: "मठ",
+        nav360: "360° दृश्य",
+        navAccommodations: "आवास",
+        heroTitle: "सिक्किम की रहस्यमयी सुंदरता का अन्वेषण करें",
+        heroSubtitle: "शांत परिदृश्य, जीवंत संस्कृति, व आध्यात्मिक विरासत की खोज करें। अपनी अविस्मरणीय यात्रा की योजना बनाएं।",
+        planTripBtn: "अपनी यात्रा योजना बनाएं",
+        footerTitle: "कोडमोंक्स",
+        footerAbout: "हमारे बारे में",
+        footerContact: "संपर्क करें",
+        footerPrivacy: "गोपनीयता नीति",
+        footerTerms: "सेवा की शर्तें",
+        footerText: "© 2025 कोडमोंक्स। सर्वाधिकार सुरक्षित।"
+      }
+    };
+    let currentLang = "en";
+    function updateLang(lang) {
+      currentLang = lang;
+      for (const key in translations[lang]) {
+        const el = document.getElementById(key);
+        if (el) el.textContent = translations[lang][key];
+      }
+    }
+    document.getElementById("langSwitch").addEventListener("click", function() {
+      updateLang(currentLang === "en" ? "hi" : "en");
+    });
+    updateLang("en");
+  </script>
+</body>
+</html>

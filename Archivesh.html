@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+  <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Serif:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700;900" onload="this.rel='stylesheet'" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <title>Monastery Archives - SikkAura</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style type="text/tailwindcss">
+    .fade-in { animation: fadeIn 0.6s ease-in-out forwards }
+    @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+    .monastery-card { transition: all 0.3s ease }
+    .monastery-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(242,166,13,0.3) }
+    .monastery-image { transition: transform 0.5s ease }
+    .monastery-card:hover .monastery-image { transform: scale(1.05) }
+  </style>
+</head>
+<body class="bg-[#fcfbf8]">
+  <div class="flex min-h-screen flex-col">
+    
+    <!-- Header -->
+    <header class="flex items-center justify-between border-b border-b-[#f4efe7] px-10 py-4">
+      <div class="flex items-center gap-3 text-[#1c170d]">
+        <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 rounded-full">
+        <h2 class="text-xl font-bold font-serif">CodeMonks</h2>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#1c170d]">
+        <a href="Events.html" class="hover:text-[#f2a60d]">Events</a>
+        <a href="Archives.html" class="hover:text-[#f2a60d]">Monuments</a>
+        <a href="#" class="text-[#f2a60d] font-bold hover:text-[#f2a60d]">Monasteries</a>
+        <a href="#">360° Views</a>
+        <a href="Accommodations.html">Accommodations</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative h-[400px] flex items-center justify-center">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUjOUkL00GcQwfkA-FEUc_EAA8WarfTwbW_QZBtU7cIJXo8pBQxUrhWyA8biBVPXCprTQSztTYvJD0bGcif3dLVb579tUq3taeZWwJoN-Dj1w5foya1rVfhqN2GwkyFrW4DIAisnI3EthGdWDvm-mGjdFyEAPjm3goh2Ey3H4VRtkySULK5ZEQ7iPJ5yEZFoQNYdiI05coFNgd16bdhQsUnuh95D6kU-5XaKWOdwLTpMrTovlUI8hww7SILPbGt25DFjHiam0jWw"
+           alt="Sikkim monasteries" class="absolute inset-0 w-full h-full object-cover"/>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/50"></div>
+      <div class="relative text-center text-white z-10">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Monastery Archives</h1>
+        <p class="text-lg md:text-xl">Discover the spiritual heritage of Sikkim through its sacred monasteries</p>
+      </div>
+    </section>
+
+    <!-- Main -->
+    <main class="flex-1 px-4 md:px-20 lg:px-40 py-12">
+      <!-- Search -->
+      <div class="bg-white rounded-lg shadow p-6 md:p-8 border border-[#f4efe7] max-w-4xl mx-auto mb-8">
+        <h2 class="text-2xl font-bold font-serif text-center mb-6">Search Monasteries</h2>
+        <div class="space-y-4">
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-500">search</span>
+            <input id="searchInput" placeholder="Search by name, location, or tradition..."
+                   class="w-full pl-10 pr-4 h-12 border border-[#f4efe7] rounded-lg focus:ring-2 focus:ring-[#f2a60d] focus:border-transparent"/>
+          </div>
+          <div class="flex flex-wrap gap-2 justify-center" id="filterButtons">
+            <button class="tradition-filter active px-4 py-2 rounded-full text-sm font-medium bg-[#f2a60d] text-[#1c170d]" data-tradition="all">
+              All Traditions
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p id="resultsCount" class="text-stone-600 mb-6"></p>
+      <div id="monasteryGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-8"></div>
+
+      <div id="noResults" class="text-center py-12 hidden">
+        <span class="material-symbols-outlined text-5xl mb-4 block text-stone-400">search_off</span>
+        <h3 class="text-xl font-semibold mb-2">No monasteries found</h3>
+        <p class="text-stone-600 mb-4">Try adjusting your search or filters</p>
+        <button onclick="clearFilters()"
+                class="px-6 py-2 border border-[#f2a60d] text-[#f2a60d] rounded-full hover:bg-[#f2a60d] hover:text-[#1c170d]">
+          Clear Filters
+        </button>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#f4efe7] text-center py-6 text-sm text-stone-500">
+      © 2025 CodeMonks. All rights reserved.
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 hidden bg-black bg-opacity-60 items-center justify-center z-50">
+    <div class="bg-white rounded-lg max-w-lg w-11/12 p-6 relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full">✕</button>
+      <img id="modal-image" class="w-full h-64 object-cover rounded mb-4" />
+      <h2 id="modal-title" class="text-2xl font-bold font-serif mb-2"></h2>
+      <p id="modal-description" class="text-stone-600 mb-4"></p>
+      <p><strong>Location:</strong> <span id="modal-location"></span></p>
+      <p><strong>Tradition:</strong> <span id="modal-tradition"></span></p>
+      <p><strong>Founded:</strong> <span id="modal-founded"></span></p>
+      <p><strong>Features:</strong> <span id="modal-features"></span></p>
+    </div>
+  </div>
+
+<script>
+const monasteries = [
+  {
+    id: 1,
+    name: "Rumtek Monastery",
+    location: "Near Gangtok, East Sikkim",
+    founded: "16th century",
+    tradition: "Kagyu",
+    description: "Demonstrates the best of Tibetan architecture, an almost replica of the original in Tsurpu, Tibet. Known for very rare Buddhist art objects and significant influence on Sikkim's religious life.",
+    features: ["Rare Buddhist art", "Dharma Chakra Centre", "Tibetan architecture", "Seat of the Karmapa"],
+    image: "https://static.wixstatic.com/media/caf9d0_9a14f4fd35094af297ee7cd019bf97ca~mv2.jpg",
+  },
+  {
+    id: 2,
+    name: "Tashiding Monastery",
+    location: "Hilltop between Rathong and Rangit rivers, West Sikkim",
+    founded: "17th century",
+    tradition: "Nyingma",
+    description: "Believed to cleanse every sin for those seeking forgiveness. Known for its Holy Water Ceremony (Bhum Chu) and vibrant prayer flags representing the five elements.",
+    features: ["Holy Water Ceremony", "Prayer flags", "Five elements symbolism"],
+    image: "https://lh3.googleusercontent.com/p/AF1QipOEyDsp0AdoNhjuVdA6T0tD4zW8AzRDLm11xAoN=s680-w680-h510",
+  },
+  {
+    id: 3,
+    name: "Pemayangtse Monastery",
+    location: "Near Pelling, West Sikkim",
+    founded: "1650",
+    tradition: "Nyingma",
+    description: "Pemayangtse means 'Perfect Sublime Lotus'. Among the oldest monasteries in Sikkim, it is surrounded by woods and Himalayan views. Famous for antique idols, paintings, and peaceful meditation.",
+    features: ["Antique idols", "Lotus symbolism", "Three stories", "Himalayan views"],
+    image: "https://lh3.googleusercontent.com/p/AF1QipNUQuWwTZIphV-ylkKKYWoEotT4IElYMRiJQkdS=s680-w680-h510",
+  },
+  {
+    id: 4,
+    name: "Phensang Monastery",
+    location: "Near Gangtok, North Sikkim",
+    founded: "1721",
+    tradition: "Nyingma",
+    description: "One of the largest monasteries in Sikkim, rebuilt several times after fire/rain damage. Famous for December Chaam and Kagyat dance festivals and sacred New Year dance.",
+    features: ["Chaam dance", "New Year dance", "Large monk population"],
+    image: "https://lh3.googleusercontent.com/p/AF1QipMz1q5gFPLKqaRcdPrnSI0rZjLwwkEKYiPAUqgz=s680-w680-h510",
+  },
+  {
+    id: 5,
+    name: "Phodong Monastery",
+    location: "North Sikkim",
+    founded: "1740",
+    tradition: "Kagyu",
+    description: "Famous for octagonal 'Rinchen Surgay' architecture and murals. Festival site for vibrant celebrations, murals/frescos, and beautiful location.",
+    features: ["Rinchen Surgay architecture", "Murals & frescos", "Festival vibrance"],
+    image: "https://lh3.googleusercontent.com/p/AF1QipOxxUIGpuMQbft2TkNxjYvD6nyeK4TYZ_YmCrnL=s680-w680-h510",
+  },
+  {
+    id: 6,
+    name: "Enchey Monastery",
+    location: "Near Gangtok, East Sikkim",
+    founded: "1909",
+    tradition: "Nyingma",
+    description: "Known as the 'solitary temple'. Renovated Chinese pagoda style, guardian monastery of Gangtok. Famous for Cham dances and Tantric murals.",
+    features: ["Cham dances", "Chinese pagoda style", "Tantric murals"],
+    image: "https://lh3.googleusercontent.com/p/AF1QipOwoaqysMveDHpcoZ8MMO-QZ-GL5cx53jPRwYls=s680-w680-h510",
+  },
+  {
+    id: 7,
+    name: "Dubdi Monastery",
+    location: "Near Yuksom, West Sikkim",
+    founded: "1701",
+    tradition: "Nyingma",
+    description: "Dubdi is the oldest Sikkim monastery, built during Chogyal Namgyal's reign with panoramic mountain views and historical significance.",
+    features: ["Oldest monastery", "Mountain panorama", "Ancient manuscripts"],
+    image: "https://lh3.googleusercontent.com/p/AF1QipP6ayjrB6ELrovByqK4TTCi06cZXTGkIJwBa5br=s680-w680-h510",
+  },
+  {
+    id: 8,
+    name: "Sanga Chelling Monastery",
+    location: "Near Pelling, West Sikkim",
+    founded: "1697",
+    tradition: "Nyingma",
+    description: "One of the oldest monasteries, situated on hilltop offering spiritual and peaceful ambiance. Notable for ancient structure and beautiful setting.",
+    features: ["Ancient architecture", "Hilltop location", "Peaceful ambiance"],
+    image: "https://lh3.googleusercontent.com/p/AF1QipNG804mBWoHwGivenv4bsCfH1rEy09USiMYF27O=s680-w680-h510",
+  }
+];
+
+// State
+let searchQuery='', selectedTradition='all', filtered=[...monasteries];
+const traditions=[...new Set(monasteries.map(m=>m.tradition))];
+
+function init() {
+  const filters=document.getElementById("filterButtons");
+  traditions.forEach(t=>{
+    const b=document.createElement("button");
+    b.textContent=t;
+    b.dataset.tradition=t;
+    b.className="tradition-filter px-4 py-2 rounded-full text-sm border border-[#f2a60d] text-[#f2a60d] hover:bg-[#f2a60d] hover:text-[#1c170d]";
+    filters.appendChild(b);
+  });
+  render();
+  setup();
+}
+
+function setup(){
+  document.getElementById("searchInput").addEventListener("input",e=>{
+    searchQuery=e.target.value;
+    filter();
+  });
+  document.addEventListener("click",e=>{
+    if(e.target.classList.contains("tradition-filter")){
+      document.querySelectorAll(".tradition-filter").forEach(btn=>btn.className="tradition-filter px-4 py-2 rounded-full text-sm border border-[#f2a60d] text-[#f2a60d]");
+      e.target.className="tradition-filter px-4 py-2 rounded-full text-sm bg-[#f2a60d] text-[#1c170d]";
+      selectedTradition=e.target.dataset.tradition;
+      filter();
+    }
+  });
+}
+
+function filter(){
+  filtered=monasteries.filter(m=>{
+    const q=searchQuery.toLowerCase();
+    const matches=m.name.toLowerCase().includes(q)||m.location.toLowerCase().includes(q)||m.description.toLowerCase().includes(q)||m.tradition.toLowerCase().includes(q);
+    const matchesT=selectedTradition==="all"||m.tradition===selectedTradition;
+    return matches&&matchesT;
+  });
+  render();
+}
+
+function render(){
+  const grid=document.getElementById("monasteryGrid"), count=document.getElementById("resultsCount"), noRes=document.getElementById("noResults");
+  count.textContent=`Found ${filtered.length} monaster${filtered.length===1?"y":"ies"}${searchQuery?` matching "${searchQuery}"`:""}`;
+  if(!filtered.length){grid.innerHTML="";noRes.classList.remove("hidden");return;} noRes.classList.add("hidden");
+  grid.innerHTML=filtered.map(m=>`
+    <div class="monastery-card bg-white rounded-lg shadow border border-[#f4efe7] overflow-hidden">
+      <img src="${m.image}" alt="${m.name}" class="monastery-image h-64 w-full object-cover"/>
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-xl font-serif font-bold">${m.name}</h3>
+          <span class="px-2 py-1 text-sm rounded-full bg-[#f2a60d]/10 text-[#f2a60d]">${m.tradition}</span>
+        </div>
+        <p class="text-stone-600 text-sm mb-4">${m.description.substring(0,110)}...</p>
+        <button onclick="openModal(${m.id})" class="w-full px-4 py-2 border border-[#f2a60d] text-[#f2a60d] rounded-lg hover:bg-[#f2a60d] hover:text-[#1c170d]">Learn More</button>
+      </div>
+    </div>`).join('');
+}
+
+function clearFilters(){
+  searchQuery="";selectedTradition="all";document.getElementById("searchInput").value="";
+  document.querySelectorAll('.tradition-filter').forEach(btn => btn.className="tradition-filter px-4 py-2 rounded-full text-sm border border-[#f2a60d] text-[#f2a60d]");
+  document.querySelector('[data-tradition="all"]').className="tradition-filter px-4 py-2 rounded-full text-sm bg-[#f2a60d] text-[#1c170d]";
+  filter();
+}
+
+function openModal(id){
+  const m=monasteries.find(x=>x.id===id);
+  document.getElementById("modal-title").textContent=m.name;
+  document.getElementById("modal-description").textContent=m.description;
+  document.getElementById("modal-location").textContent=m.location;
+  document.getElementById("modal-tradition").textContent=m.tradition;
+  document.getElementById("modal-founded").textContent=m.founded;
+  document.getElementById("modal-image").src=m.image;
+  document.getElementById("modal-features").textContent=m.features.join(", ");
+  const modal=document.getElementById("modal");
+  modal.classList.remove("hidden");modal.classList.add("flex");
+}
+function closeModal(){
+  const modal=document.getElementById("modal");
+  modal.classList.add("hidden");modal.classList.remove("flex");
+}
+document.addEventListener("DOMContentLoaded",init);
+</script>
+</body>
+</html>

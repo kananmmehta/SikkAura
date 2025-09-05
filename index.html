@@ -1,0 +1,526 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Serif%3Awght%40400%3
+    B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>SikkAura</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        .carousel-item {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    }
+    .carousel-item.active {
+    opacity: 1;
+    }
+    .carousel-container {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    }
+    .carousel-container::-webkit-scrollbar {
+    display: none;
+    }
+    @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+    }
+    .fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+    }
+    .span img{
+        height: 100px;
+    }
+    </style>
+</head>
+
+<body class="bg-[#fcfbf8]">
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden"
+        style='font-family: "Noto Sans", sans-serif;'>
+        <div class="fixed inset-0 -z-10">
+            <img alt="Background image of a serene Sikkim landscape with misty mountains." class="size-full
+    object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUjOUkL00GcQwfkA-FEUc_EAA8WarfTwbW_QZBtU7cIJXo8pBQxUrhWyA8biBVPXCprTQSztTYvJD0bGcif3dLVb579tUq3taeZWwJoN-Dj1w5foya1rVfhqN2GwkyFrW4DIAisnI3EthGdWDvm-mGjdFyEAPjm3goh2Ey3H4VRtkySULK5ZEQ7iPJ5yEZFoQNYdiI05coFNgd16bdhQsUnuh95D6kU-5XaKWOdwLTpMrTovlUI8hww7SILPbGt25DFjHiam0jWw" />
+            <div class="absolute inset-0 bg-[#fcfbf8]/80 backdrop-blur-sm"></div>
+        </div>
+        <div class="layout-container flex h-full grow flex-col">
+            <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-
+    b-[#f4efe7] px-10 py-4">
+                <div class="flex items-center gap-3 text-[#1c170d]">
+                    <!-- <span class="material-symbols-outlined text-3xl text-[#f2a60d]">
+        <img src="assets/teamlogo.jpg" alt="image" height="100px">
+    </span> -->
+                    <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
+
+                    <h2 class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">CodeMonks
+                    </h2>
+                </div>
+                <div class="flex items-center gap-8">
+                    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#1c170d]">
+                        <a class="hover:text-[#f2a60d] transition-colors" href="Events.html">Events</a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="Archives.html">Archives</a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="Monasteries.html">Monasteries</a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="#">360° Views</a>
+                        <a class="hover:text-[#f2a60d] transition-colors" href="Accommodations.html ">Accommodations</a>
+                    </nav>
+                    <div class="flex items-center gap-2">
+                        <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-
+    full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
+                            <span class="material-symbols-outlined">search</span>
+                        </button>
+                        <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-
+    full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
+                            <span class="material-symbols-outlined">language</span>
+                        </button>
+                        <button class="ml-2">
+                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                                style='background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg");'>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <main class="flex-1">
+                <div class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
+                    <div class="layout-content-container flex flex-col max-w-7xl flex-1">
+                        <div class="@container">
+                            <div class="@[480px]:p-4">
+
+                                <!-- Parent container -->
+                                <div class="relative flex min-h-[730px] rounded-2xl overflow-hidden">
+
+                                    <!-- Video Background -->
+                                    <video autoplay loop muted playsinline
+                                        class="absolute inset-0 w-full h-full object-cover">
+                                        <source src="assets/videos/Aura.mp4" type="video/mp4">
+                                    </video>
+
+                                    <!-- Dark Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/50"></div>
+
+                                    <!-- Flexbox Overlay Content -->
+                                    <div
+                                        class="relative z-10 flex flex-col items-center justify-center text-center gap-6 p-8 w-full">
+                                        <h1
+                                            class="text-white text-4xl font-black leading-tight tracking-tighter @[480px]:text-6xl font-serif">
+                                            Explore the Mystical Beauty of Sikkim
+                                        </h1>
+                                        <p class="text-white/90 text-lg font-normal leading-relaxed max-w-2xl">
+                                            Discover the serene landscapes, vibrant culture, and spiritual heritage of
+                                            Sikkim.
+                                            Plan your unforgettable journey with us.
+                                        </p>
+                                        <button
+                                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-[#f2a60d] text-[#1c170d] text-base font-bold leading-normal tracking-wide hover:bg-amber-400 transition-all shadow-lg shadow-black/20">
+                                            <span>Plan Your Trip</span>
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <section class="py-16">
+                                <h2 class="text-[#1c170d] text-3xl font-bold leading-tight tracking-tight px-4 pb-8 font-
+    serif text-red-500">Featured Destinations</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                                    <div class="flex flex-col gap-4 rounded-lg overflow-hidden group">
+                                        <div class="w-full h-64 bg-center bg-no-repeat bg-cover rounded-lg transition-transform duration-
+    300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfThHDOXm1RBqzYl-ZZB2TxAA_PeaVZ797Uce3dps3DHEd7v4n7FTnY8b8RvihKuswk6WDnS0Hls3eG6YK0sv8UWD8btSKF1Ah-0SzH0Klhp-RQTDJoUT-c_2EngJuTC08jIFUCDHEd8ERaaqU38Baa-McaIhsDUELVAGg1Ix-ZC3EOprl3L5NoM0vYqFlK3Bd1F8WOh1Zxm3fjNlxoIlI2uX0x_-wA4tU7tU58kfT4P2vf9lZbJuTAv27kwfAyPlZdy-v11pfIg");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-xl font-bold font-serif">Rumtek Monastery
+                                            </h3>
+                                            <p class="text-stone-600 text-base font-normal leading-relaxed">
+                                                Explore the largest monastery in Sikkim, showcasing Tibetan architecture
+                                                and spiritual
+                                                heritage.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-4 rounded-lg overflow-hidden group">
+                                        <div class="w-full h-64 bg-center bg-no-repeat bg-cover rounded-lg transition-transform duration-
+    300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfSkJgh7Va_s5kFRgthRa9d0VsKlT7IiaZ96Mp1povzd8qYkt-baNdy-RzV85m3r2263Y6tZbgNUq2FBHUyRetdkmEcwtmfKFP9BChZ0UqFXOrsbwFkBK8BEUkIXq_qOfn6bvzAJDvDKVI_VWuUdEpVk9eNac1BikMqY4Z1RKCXska9DGYGYUi8Sg7avL4fFivO7-e_WpTgv99kj2aZZgvhtoZsgxw5hfOw9OfiBzqGegW3PzotAsT_XhAlF6M_drv0VAcr7ceiw");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-xl font-bold font-serif">Tsomgo Lake</h3>
+                                            <p class="text-stone-600 text-base font-normal leading-relaxed">Discover the
+                                                glacial lake known for
+                                                its stunning beauty and changing colors.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-4 rounded-lg overflow-hidden group">
+                                        <div class="w-full h-64 bg-center bg-no-repeat bg-cover rounded-lg transition-transform duration-
+    300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPnrUKs9hwSLsVBbbyNuDdxVBbe8EvF5-Hj8CVzmxeiDX3XhPSEU39cf65qWV1nBhoXvWUctMNCkShzzzh6U3IWTznmTwilaCi2MGIivWs2_mq37bxJTN6STAd05jwPjz_d9gwbWTYtoU4I4HcfM1OH-ayYZ4wjUwgC4-XyTZdayzdq1SelTh368WNcmTeO14HbwYDs4kB4-Eiqnp1ZRrctYlsYV9SAGTgg2tmOLQNHqR01YIj1RHe9GgTWb7dXwTH1fnkqOoEvA");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-xl font-bold font-serif">Kanchenjunga Peak
+                                            </h3>
+                                            <p class="text-stone-600 text-base font-normal leading-relaxed">Witness the
+                                                majestic third highest
+                                                peak in the world, offering breathtaking views.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="py-16 overflow-hidden">
+                                <div class="flex flex-col items-center text-center px-4">
+                                    <h2
+                                        class="text-[#1c170d] text-3xl font-bold leading-tight tracking-tight font-serif">
+                                        Immersive 360°
+                                        Views</h2>
+                                    <p
+                                        class="text-stone-600 text-base font-normal leading-relaxed mt-2 max-w-2xl mx-auto">
+                                        Step Inside Sikkim's Wonders. Experience the breathtaking beauty of Sikkim's
+                                        most iconic
+                                        locations from wherever you are. Our 360-degree panoramic views offer an
+                                        immersive journey into
+                                        the heart of the Himalayas.
+                                    </p>
+                                </div>
+                                <div class="relative w-full mt-8">
+                                    <div class="carousel-container flex snap-x snap-mandatory overflow-x-auto"
+                                        id="carousel">
+                                        <div class="carousel-item active fade-in w-full flex-shrink-0">
+                                            <div class="relative group rounded-lg overflow-hidden mx-auto"
+                                                style="width: 90%; height: 500px;">
+                                                <img alt="360 view of Tsomgo Lake" class="w-full h-full object-cover transition-transform duration-
+    500 ease-in-out group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2e3aJ2hBqY1F7F6i6p7J7J9j4i3O8A8u0H7J7V9k5H7l3E5k2B6C5k3h4H7m6g5F3i2I1h9g8k7d6i5h4j3f2g1E9c8b7a6d5e4f3c2b1a0" />
+                                                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center opacity-0 group-
+    hover:opacity-100 transition-opacity duration-300">
+                                                    <div
+                                                        class="absolute top-4 right-4 bg-[#f2a60d]/80 text-[#1c170d] p-2 rounded-full">
+                                                        <span class="material-symbols-outlined">view_in_ar</span>
+                                                    </div>
+                                                    <h3 class="text-white text-2xl font-bold font-serif">Tsomgo Lake
+                                                    </h3>
+                                                    <button class="mt-4 flex items-center gap-2 min-w-[84px] max-w-[480px] cursor-pointer justify-
+    center overflow-hidden rounded-full h-12 px-6 bg-[#f2a60d] text-[#1c170d] text-base font-bold
+    leading-normal tracking-wide hover:bg-amber-400 transition-all shadow-lg shadow-black/20">
+                                                        <span>Explore View</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item w-full flex-shrink-0">
+                                            <div class="relative group rounded-lg overflow-hidden mx-auto"
+                                                style="width: 90%; height: 500px;">
+                                                <img alt="360 view of Gurudongmar Lake" class="w-full h-full object-cover transition-transform
+    duration-500 ease-in-out group-hover:scale-110"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2w87413k7t51jW8xM3F5Z9G4P2T1F8S6B0N7Q4O5R3I2V1U0Y9X8W7V6U5T4S3R2Q1P0O9N8M7L6K5J4I3H2G1F0E9D8C7B6A5@" />
+                                                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center opacity-0 group-
+    hover:opacity-100 transition-opacity duration-300">
+                                                    <div
+                                                        class="absolute top-4 right-4 bg-[#f2a60d]/80 text-[#1c170d] p-2 rounded-full">
+                                                        <span class="material-symbols-outlined">view_in_ar</span>
+                                                    </div>
+                                                    <h3 class="text-white text-2xl font-bold font-serif">Gurudongmar
+                                                        Lake</h3>
+                                                    <button class="mt-4 flex items-center gap-2 min-w-[84px] max-w-[480px] cursor-pointer justify-
+    center overflow-hidden rounded-full h-12 px-6 bg-[#f2a60d] text-[#1c170d] text-base font-bold
+    leading-normal tracking-wide hover:bg-amber-400 transition-all shadow-lg shadow-black/20">
+                                                        <span>Explore View</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item w-full flex-shrink-0">
+                                            <div class="relative group rounded-lg overflow-hidden mx-auto"
+                                                style="width: 90%; height: 500px;">
+                                                <img alt="360 view of Yumthang Valley" class="w-full h-full object-cover transition-transform
+    duration-500 ease-in-out group-hover:scale-110"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8v1v88k2v0n4s5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0o1p2q3r4s5t6u7v8w9x0y1z2a3b4c5d6" />
+                                                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center opacity-0 group-
+    hover:opacity-100 transition-opacity duration-300">
+                                                    <div
+                                                        class="absolute top-4 right-4 bg-[#f2a60d]/80 text-[#1c170d] p-2 rounded-full">
+                                                        <span class="material-symbols-outlined">view_in_ar</span>
+                                                    </div>
+                                                    <h3 class="text-white text-2xl font-bold font-serif">Yumthang Valley
+                                                    </h3>
+                                                    <button class="mt-4 flex items-center gap-2 min-w-[84px] max-w-[480px] cursor-pointer justify-
+    center overflow-hidden rounded-full h-12 px-6 bg-[#f2a60d] text-[#1c170d] text-base font-bold
+    leading-normal tracking-wide hover:bg-amber-400 transition-all shadow-lg shadow-black/20">
+                                                        <span>Explore View</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                                        <button
+                                            class="h-3 w-3 rounded-full bg-white/50 transition-colors hover:bg-white"
+                                            onclick="document.getElementById('carousel').scrollBy({ left: -window.innerWidth, behavior:
+    'smooth' });"></button>
+                                        <button
+                                            class="h-3 w-3 rounded-full bg-white/50 transition-colors hover:bg-white"
+                                            onclick="document.getElementById('carousel').scrollBy({ left: window.innerWidth, behavior:
+    'smooth' });"></button>
+                                    </div>
+                                    <button class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/50 text-[#1c170d] rounded-full p-2
+    hover:bg-white transition-colors" onclick="document.getElementById('carousel').scrollBy({ left: -
+    window.innerWidth, behavior: 'smooth' });">
+                                        <span class="material-symbols-outlined">chevron_left</span>
+                                    </button>
+                                    <button class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/50 text-[#1c170d] rounded-full p-2
+    hover:bg-white transition-colors" onclick="document.getElementById('carousel').scrollBy({ left:
+    window.innerWidth, behavior: 'smooth' });">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </button>
+                                </div>
+                                <div class="text-center mt-8">
+                                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-
+    hidden rounded-full h-12 px-6 bg-transparent text-[#1c170d] text-base font-bold leading-normal
+    tracking-wide hover:bg-[#f4efe7] transition-all border border-[#f2a60d] mx-auto">
+                                        <span>Discover More Views</span>
+                                    </button>
+                                </div>
+                            </section>
+                            <section class="py-16">
+                                <h2
+                                    class="text-[#1c170d] text-3xl font-bold leading-tight tracking-tight px-4 pb-8 font-serif">
+                                    Cultural
+                                    Events</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB18ynC4YEyKMJvlEmvr33CGTOQEzpVEW3Xbtv63tFXzwmjKMXuNQURW3110x7Xlaog7fvLFROH4UJYeGKNBCTfXqEfeOasQXpjuD2vJC56NoWxySZkrHhgBTvErHroPUZEuaHkBgI7ddnArHiZhmoGJoSsd0QeHP_JeMmS-bG8OmgL8hOBKPTgcmKUCYbqbFK9nlfJqQ2Uf8Q_fCdC_LH10ovLaPDaD06o3vKOXxaH35IhlaOUPifEwUd5EyPmq3ZfVQeBXgEwjA");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Saga Dawa Festival</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">
+                                                Experience the vibrant Saga Dawa Festival, celebrating Buddha's life
+                                                with colorful
+                                                processions and rituals.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaDdyol8zyFcTc4qXOC3Art8GdAUTO6w1JsRsQnRmkR9C2WVUmWWs7hmgK_RDYksQD1ReuEVz4yBU08xKXDcukhNW5rq1tgLnP9Yfx5n2ok0ZfzvIGAdrnNvsGNeNyGBCGOwHJ3TzTxJI05edY4mHEDmaAM5aop2PON3LJS1nLj_q5F736Imon8E5H4zBlCM88q1QCVvsrA99tCUc1W7lBzM7RKMemPwLAzhwOH_WWskbGSnKBzAlVrYkd_bdj146MnL8vi6ZJ_g");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Pang Lhabsol Festival</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">
+                                                Witness the unique Pang Lhabsol Festival, honoring Mount Kanchenjunga
+                                                with
+                                                traditional dances and performances.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAiBSiMn6d83SMldbH9zS4VuI0lBIlbpdXBePrnINvadAARZYkHVR6pG7NAu1No4Qm73sAbVlUvDyHLS4jPFYfLt01nJguNIn_2QvkyZ5LkdI5XviaG8P2HWJwp3oEqtoVVnWGlysLaIrm3g6yGKFY6W2XE23SNr83KJP7f1fXK1cOSSWc6irgyt0WEe4S1DVTvaAcWxIQD9K6VLRxacYYRGeYSme7x0evmYLfzjYU_FCe6VbBvxvQomOjZu9xf1CBiq_EjXG0lg");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Losar Festival</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">Celebrate
+                                                the Tibetan New Year,
+                                                Losar, with traditional feasts, dances, and cultural activities.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="py-16">
+                                <h2 class="text-[#1c170d] text-3xl font-bold leading-tight tracking-tight px-4 pb-8 font-
+    serif">Historical Monuments &amp; Monasteries</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsScjukJXXuKfpgXe5jOHzASX_V9P-drnvXlNEhpRiormZMDUpxBS2rkz9bsk8OVsHQ7K78JkIZCO43-uIf4T_Q7u6H4-v9BLNZ8UQvf55SLMmXSxes8swvnr3DBkj2c9BD9-jeHfzJrCER_g6a-dv41LXFJmPY-pwpUzkdqCXv8ec08wz7wqvLl4_nB4GKHUyiiIsBGL2T5mDkGXm1DeigtAT9QRc9Pe4RmzndRImWHFfGbfkZPb1mfHxzStw4WraRZHUrdaHqA");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Rabdentse Ruins</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">
+                                                Explore the ruins of Rabdentse, the former capital of Sikkim, offering
+                                                insights into its
+                                                rich history.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBzZbCNXHRbBVBl_NjC69L2ihtq3sTgzgsrqx4FdDhIQ-yJWzVh875Yg8-rflyM_F0bOJ0GZ5BUxn_kQJ69Xj6hjVSFUkDcT6HM0S63U2JXTEoLc_O2KxC3tXvKkFRg6il658LC3ZeS2X9lrTOEhS_rL_E15sTblL8jIUwQpqMf3t2NRXx-_uRNXUm7wtPF56L0MPXrhmHAkwosdf0i7H_yPE7-_fIbq-tYBKgW1H0DJbeyZxDv2BDLCAKOyZq1JRQx2eHbKFvr-A");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Yuksom Coronation
+                                                Throne</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">Visit
+                                                Yuksom, the first capital of
+                                                Sikkim, and see the historic coronation throne.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkV47ngBLvrRsiJxMQeysYhH52EWxU3sOyJEHG3BhBcEoFawJp3pAKJYBgBcT4ZxkxOWkndf8O_jZm-mSvg2aBfE87KXtvoZ443-Wlv9uJIA-8zcmuRwym-RC-UbcL_s2wYcBnu3ZUJBXLG_R68Wdf3yblxD0v1rmv5sHRdXLzb9hcV3TI7Blg_2r0YZ7yNfRV67YSAapFbf_Hp51sAR3Iv4k8LR7QH6a4qZfIfc0zxBsH7o3nRioXQU8KoKHFl-JvjwEaCyhxtA");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Pemayangtse
+                                                Monastery</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">
+                                                Visit Pemayangtse Monastery, one of the oldest and most important
+                                                monasteries in
+                                                Sikkim.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="py-16">
+                                <h2 class="text-[#1c170d] text-3xl font-bold leading-tight tracking-tight px-4 pb-8 font-
+    serif">Accommodation</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDHYOU8ugCjtQ6ugBEmb6oBKgTc-m0bfJIfpKZ6Nu2Y1WtQr8xFkj-GsZpWkY-aJGcUgs-MHMr4UK5mIaGVpMF0C3YT6T6rcryCgSm3s5yCncvi42P_WcdCYFWMVi9i8tOGxhiRVwSONgvA4zfu-RHC_EcBsHDQaVxWPfODOn-EM_HQ5rQoIHGsiBnantZZlq6p2CcxVDNEw1fOTGlFKdnqBtWTCi-nwvWgz6n2ILtBPL0mtO9iSAB2T2XNPcv6zQMwwkMU2e_h_Q");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Luxury Resorts</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">Indulge
+                                                in luxury at Sikkim's top
+                                                resorts, offering world-class amenities and breathtaking views.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCiY2g40eN10xtJVoZzqrzC-T5jnHMEQqbcCEJQCxckFNWsYwH0x4jLWjkKG475sNls3dhmGlZvaYdz7Mvkf52g5Tuv3fk5Cei0dnmYemI9yz2CVdxUYpj94LFV8msVymCVcdMDNGonnBVAADoegPY0OQ5Yq1O7tEz434e-5KbBscdeKWxmPo1TibqbbLJAfQv4mlt4-ymLbgDU4TlSgqvLw3DEWl2ym5DRQAVdXI_YN20KoReFfFR6AevEetRlBeowV95U5c3cQg");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Homestays</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">
+                                                Experience local hospitality with comfortable homestays, providing a
+                                                glimpse into
+                                                Sikkimese culture.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="w-full h-56 bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFE85uQViEFcQF2HhhB0qXKxGaSudUxqUFAXUvZp0VQ0WWToUGipPx_8u-XjPzQwwTj5Cof5vNX6Tal422ElxuI0mppBwNfetnYcEfcCngiKPSmJAtSWZYyE24QIRwv82ouoiB01bLWQEIRgpUwFEARf4XSN1BBo2PiVEsQJ_8vscDl7He1anjLhR82_VUw63oWKCk8ATPCqL_DrW0TLPpmyiDJJLJAm_SlzGBoRAnKfnx5jVG-EkkGZsw6R1J7kwR-20qOyd46A");'>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-[#1c170d] text-lg font-semibold leading-snug font-serif">
+                                                Budget Hotels</h3>
+                                            <p class="text-stone-600 text-sm font-normal leading-relaxed mt-1">
+                                                Find affordable and comfortable budget hotels, ensuring a pleasant stay
+                                                without
+                                                breaking the bank.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="py-20 text-center">
+                                <div class="flex flex-col items-center gap-6">
+                                    <h2
+                                        class="text-[#1c170d] text-4xl font-bold leading-tight tracking-tight font-serif max-w-2xl">
+                                        Start Planning Your Sikkim Adventure Today
+                                    </h2>
+                                    <p class="text-stone-600 text-lg font-normal leading-relaxed max-w-3xl">
+                                        Explore the mystical beauty of Sikkim with our comprehensive travel guide.
+                                        Discover
+                                        hidden gems, cultural events, and comfortable accommodations. Your
+                                        unforgettable journey awaits!
+                                    </p>
+                                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-
+    hidden rounded-full h-12 px-6 bg-[#f2a60d] text-[#1c170d] text-base font-bold leading-normal
+    tracking-wide hover:bg-amber-400 transition-all shadow-lg shadow-black/20">
+                                        <span>Plan Your Trip</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </main>
+            <footer class="border-t border-solid border-t-[#f4efe7]">
+                <div class="container mx-auto px-4">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 py-10">
+                        <div class="flex items-center gap-3 text-[#1c170d]">
+
+                                <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
+
+                                <h2 class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">CodeMonks
+                                </h2>
+                        </div>
+                        <nav class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm font-medium text-
+    stone-600">
+                            <a class="hover:text-[#f2a60d] transition-colors" href="#">About Us</a>
+                            <a class="hover:text-[#f2a60d] transition-colors" href="#">Contact</a>
+                            <a class="hover:text-[#f2a60d] transition-colors" href="#">Privacy Policy</a>
+                            <a class="hover:text-[#f2a60d] transition-colors" href="#">Terms of Service</a>
+                        </nav>
+                        <div class="flex items-center gap-4 text-stone-500">
+                            <a class="hover:text-[#f2a60d] transition-colors" href="#">
+                                <svg class="feather feather-twitter" fill="none" height="24" stroke="currentColor"
+                                    stroke- linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                    width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-
+    7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-
+    .83A7.72 7.72 0 0 0 23 3z"></path>
+                                </svg>
+                            </a>
+                            <a class="hover:text-[#f2a60d] transition-colors " href="#">
+                                <svg class="feather feather-facebook" fill="none" height="24" stroke="currentColor"
+                                    stroke- linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                    width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-
+    4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                            <a class="hover:text-[#f2a60d] transition-colors" href="#">
+                                <svg class="feather feather-instagram" fill="none" height="24" stroke="currentColor"
+                                    stroke- linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                    width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="py-6 text-center text-sm text-stone-500 border-t border-solid border-t-[#f4efe7]">
+                        <p>© 2025 CodeMonks. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        const carousel = document.getElementById('carousel');
+        const items = carousel.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+        function updateCarousel() {
+            items.forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                }
+            });
+            const offset = -currentIndex * carousel.offsetWidth;
+            carousel.style.transform = 'translateX(${offset}px)';
+        }
+        // Auto-scroll functionality could be added here if desired.
+        // For manual control via buttons, the inline onclick handlers are sufficient for this example.
+    </script>
+</body>
+
+</html>
