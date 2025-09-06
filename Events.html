@@ -1,332 +1,599 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
-    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Serif%3Awght%40400%3
-    B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <title>Stitch Design</title>
-    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <meta charset="UTF-8" />
+  <title>Sikkim Events & Cultural Calendar</title>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&family=Noto+Sans:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .carousel-item {
+      display: none;
+      position: relative;
+    }
+
+    .carousel-item.active {
+      display: block;
+    }
+
+    .modal-bg {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Bigger event cards */
+    #eventsContainer article {
+      max-width: 100%;
+      min-height: 320px;
+      font-size: 1.1rem;
+    }
+
+    #eventsContainer img {
+      height: 200px !important;
+    }
+
+    /* Modal bigger and scrollable with image */
+    #modal > div {
+      max-width: 900px;
+      width: 90%;
+      max-height: 95vh;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    #modalTitle {
+      font-size: 2.25rem;
+    }
+
+    #modalDesc {
+      white-space: pre-wrap;
+      margin-top: 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    #modalFeatures span {
+      font-size: 1.05rem;
+    }
+
+    #modalImage {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+    }
+
+    #modalInfoTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    #modalInfoTable th,
+    #modalInfoTable td {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    #modalInfoTable th {
+      width: 25%;
+      font-weight: 700;
+      color: #b45309;
+      vertical-align: top;
+    }
+  </style>
 </head>
 
 <body class="bg-[#fcfbf8]">
-    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden"
-        style='font-family: "Noto Sans", sans-serif;'>
-        <div class="layout-container flex h-full grow flex-col">
-            <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-
-    b-[#f4efe7] px-10 py-4">
-                <div class="flex items-center gap-3 text-[#1c170d]">
-                    <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
-
-                    <h2 class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">
-                        <a class="hover:text-[#f2a60d] transition-colors" href="index.html">CodeMonks</a>
-                    </h2>
-                </div>
-                <div class="flex items-center gap-8">
-                    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#1c170d]">
-                        <a class="text-[#f2a60d] font-bold" href="#">Events</a>
-                        <a class="hover:text-[#f2a60d] transition-colors" href="Archives.html">Archives</a>
-                        <a class="hover:text-[#f2a60d] transition-colors" href="Monasteries.html">Monasteries</a>
-                        <a class="hover:text-[#f2a60d] transition-colors" href="#">360° Views</a>
-                        <a class="hover:text-[#f2a60d] transition-colors" href="Accommodations.html">Accommodations</a>
-                    </nav>
-                    <div class="flex items-center gap-2">
-                        <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-
-    full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
-                            <span class="material-symbols-outlined">search</span>
-                        </button>
-                        <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-
-    full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
-                            <span class="material-symbols-outlined">language</span>
-                        </button>
-                        <button class="ml-2">
-                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTAcs02BFLtsg5oej0377tTpdX_4JohRNOy9YRHq6-gpHpokQeGPqGFI6gkKDwSQhYqYNQwoTsXnxhMsrzCibaNrSeMhrWH8vtkrhDsx-cnF8_pAZ24T56cpKECyyfDGEuSqgmHNxl4TRZkyZP_Q0MdIEy3nlx43LO5HFtSlieAJFJFq8iaDGdeyHguc4rFfxttO9XcrpLh4FKCPs7nh6RrKKjqwRzwMd6H6k6N7a3ru8UPNljNV9yAyCzUT7wYubSgL5rhFGr3w");'>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </header>
-            <main class="flex-1">
-                <div class="px-4 md:px-10 lg:px-20 flex flex-1 justify-center py-10 lg:py-16">
-                    <div class="layout-content-container flex flex-col max-w-[1440px] flex-1">
-                        <div class="flex flex-col gap-10">
-                            <div class="flex flex-col items-center text-center gap-4">
-                                <h1 class="text-[#1c170d] text-4xl lg:text-5xl font-bold leading-tight tracking-tighter font-serif max-w-
-    3xl">
-                                    Cultural Events &amp; Festivals
-                                </h1>
-                                <p class="text-stone-600 text-lg font-normal leading-relaxed max-w-3xl">
-                                    Immerse yourself in the vibrant traditions of Sikkim. Explore a calendar full of
-                                    colorful
-                                    festivals and cultural events that showcase the state's rich heritage.
-                                </p>
-                            </div>
-                            <div class="relative w-full">
-                                <div class="overflow-hidden rounded-2xl">
-                                    <div class="flex transition-transform duration-500 ease-in-out">
-                                        <div class="w-full flex-shrink-0 h-[500px] bg-cover bg-center relative" style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuB18ynC4YEyKMJvlEmvr33CGTOQEzpVEW3Xbtv63tFXzwmjKMXuNQURW3110x7Xlaog7fvLFROH4UJYeGKNBCTfXqEfeOasQXpjuD2vJC56NoWxySZkrHhgBTvErHroPUZEuaHkBgI7ddnArHiZhmoGJoSsd0QeHP_JeMmS-bG8OmgL8hOBKPTgcmKUCYbqbFK9nlfJqQ2Uf8Q_fCdC_LH10ovLaPDaD06o3vKOXxaH35IhlaOUPifEwUd5EyPmq3ZfVQeBXgEwjA");'>
-                                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
-                                            </div>
-                                            <div class="absolute bottom-0 left-0 p-8 text-white">
-                                                <h2 class="text-3xl font-bold font-serif">Saga Dawa Festival</h2>
-                                                <p class="text-white/90 mt-2 max-w-2xl">A celebration of Buddha's birth,
-                                                    enlightenment, and
-                                                    nirvana. Witness colorful processions, prayers, and the lighting of
-                                                    butter lamps.</p>
-                                                <p class="mt-2 font-semibold text-sm">Ongoing: May 25th - June 23rd</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="absolute top-1/2 -translate-y-1/2 flex justify-between w-full px-4">
-                                    <button class="flex size-10 cursor-pointer items-center justify-center rounded-full bg-white/80 text-
-    [#1c170d] hover:bg-white transition-colors backdrop-blur-sm">
-                                        <span class="material-symbols-outlined">chevron_left</span>
-                                    </button>
-                                    <button class="flex size-10 cursor-pointer items-center justify-center rounded-full bg-white/80 text-
-    [#1c170d] hover:bg-white transition-colors backdrop-blur-sm">
-                                        <span class="material-symbols-outlined">chevron_right</span>
-                                    </button>
-                                </div>
-                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                                    <button class="w-2 h-2 rounded-full bg-white"></button>
-                                    <button class="w-2 h-2 rounded-full bg-white/50"></button>
-                                    <button class="w-2 h-2 rounded-full bg-white/50"></button>
-                                </div>
-                            </div>
-                            <div class="flex flex-col lg:flex-row gap-12 pt-16">
-                                <div class="flex-1">
-                                    <h2
-                                        class="text-[#1c170d] text-3xl font-bold leading-tight tracking-tight font-serif pb-6">
-                                        Upcoming
-                                        Events</h2>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div class="flex flex-col gap-4 rounded-lg overflow-hidden group">
-                                            <div class="w-full h-60 bg-center bg-no-repeat bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaDdyol8zyFcTc4qXOC3Art8GdAUTO6w1JsRsQnRmkR9C2WVUmWWs7hmgK_RDYksQD1ReuEVz4yBU08xKXDcukhNW5rq1tgLnP9Yfx5n2ok0ZfzvIGAdrnNvsGNeNyGBCGOwHJ3TzTxJI05edY4mHEDmaAM5aop2PON3LJS1nLj_q5F736Imon8E5H4zBlCM88q1QCVvsrA99tCUc1W7lBzM7RKMemPwLAzhwOH_WWskbGSnKBzAlVrYkd_bdj146MnL8vi6ZJ_g");'></div>
-                                            <div>
-                                                <h3 class="text-[#1c170d] text-xl font-bold font-serif">Pang Lhabsol
-                                                </h3>
-                                                <p class="text-stone-600 text-base font-normal leading-relaxed">
-                                                    Witness warrior dances and prayers honoring Mount Kanchenjunga, the
-                                                    guardian deity
-                                                    of Sikkim.
-                                                </p>
-                                                <p class="text-[#f2a60d] text-sm font-semibold mt-2">August 28th, 2024
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-col gap-4 rounded-lg overflow-hidden group">
-                                            <div class="w-full h-60 bg-center bg-no-repeat bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAiBSiMn6d83SMldbH9zS4VuI0lBIlbpdXBePrnINvadAARZYkHVR6pG7NAu1No4Qm73sAbVlUvDyHLS4jPFYfLt01nJguNIn_2QvkyZ5LkdI5XviaG8P2HWJwp3oEqtoVVnWGlysLaIrm3g6yGKFY6W2XE23SNr83KJP7f1fXK1cOSSWc6irgyt0WEe4S1DVTvaAcWxIQD9K6VLRxacYYRGeYSme7x0evmYLfzjYU_FCe6VbBvxvQomOjZu9xf1CBiq_EjXG0lg");'></div>
-                                            <div>
-                                                <h3 class="text-[#1c170d] text-xl font-bold font-serif">Losar Festival
-                                                </h3>
-                                                <p class="text-stone-600 text-base font-normal leading-relaxed">
-                                                    Celebrate the Tibetan New Year
-                                                    with traditional music, dance, and feasting across the monasteries.
-                                                </p>
-                                                <p class="text-[#f2a60d] text-sm font-semibold mt-2">February 10th, 2025
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-col gap-4 rounded-lg overflow-hidden group">
-                                            <div class="w-full h-60 bg-center bg-no-repeat bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image:url("https://images.pexels.com/photos/33687825/pexels-photo-33687825.jpeg?_gl=1*1yp51vw*_ga*MTczNTk4NTEuMTc1NTc5ODYzMQ..*_ga_8JE65Q40S6*czE3NTY3NDk4MjMkbzckZzEkdDE3NTY3NTA5NjIkajU5JGwwJGgw");'></div>
-                                            <div>
-                                                <h3 class="text-[#1c170d] text-xl font-bold font-serif">Flower Festival
-                                                </h3>
-                                                <p class="text-stone-600 text-base font-normal leading-relaxed">
-                                                    A month-long extravaganza showcasing Sikkim's rich variety of
-                                                    flowers, including
-                                                    orchids and rhododendrons.
-                                                </p>
-                                                <p class="text-[#f2a60d] text-sm font-semibold mt-2">April 1st - 30th,
-                                                    2025</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-col gap-4 rounded-lg overflow-hidden group">
-                                            <div class="w-full h-60 bg-center bg-no-repeat bg-cover rounded-lg transition-transform duration-300 group-hover:scale-105" style='background-image:url("https://images.pexels.com/photos/33692325/pexels-photo-33692325.jpeg?_gl=1*uk70uv*_ga*MTczNTk4NTEuMTc1NTc5ODYzMQ..*_ga_8JE65Q40S6*czE3NTY3NDk4MjMkbzckZzEkdDE3NTY3NTEzMjAkajMxJGwwJGgw");'></div>
-                                            <div>
-                                                <h3 class="text-[#1c170d] text-xl font-bold font-serif">Dasain (Durga
-                                                    Puja)</h3>
-                                                <p class="text-stone-600 text-base font-normal leading-relaxed">The
-                                                    longest Hindu festival in Sikkim,
-                                                    celebrating the victory of good over evil with family gatherings and
-                                                    feasts.</p>
-                                                <p class="text-[#f2a60d] text-sm font-semibold mt-2">October 3rd - 7th,
-                                                    2024</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lg:w-[400px] lg:sticky top-16 self-start">
-                                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
-                                        <div class="flex items-center justify-between pb-4">
-                                            <h3 class="text-lg font-bold text-[#1c170d] font-serif">June 2024</h3>
-                                            <div class="flex items-center gap-2">
-                                                <button class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-transparent
-    text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
-                                                    <span
-                                                        class="material-symbols-outlined text-base">chevron_left</span>
-                                                </button>
-                                                <button class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-transparent
-    text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
-                                                    <span
-                                                        class="material-symbols-outlined text-base">chevron_right</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="grid grid-cols-7 gap-2 text-center text-sm text-stone-500">
-                                            <div>S</div>
-                                            <div>M</div>
-                                            <div>T</div>
-                                            <div>W</div>
-                                            <div>T</div>
-                                            <div>F</div>
-                                            <div>S</div>
-                                        </div>
-                                        <div class="grid grid-cols-7 gap-2 mt-2 text-center text-[#1c170d]">
-                                            <div class="text-stone-400">26</div>
-                                            <div class="text-stone-400">27</div>
-                                            <div class="text-stone-400">28</div>
-                                            <div class="text-stone-400">29</div>
-                                            <div class="text-stone-400">30</div>
-                                            <div class="text-stone-400">31</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">1</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">2</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">3</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">4</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">5</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">6</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">7</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">8</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">9</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">10</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">11</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">12</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">13</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">14</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">15</div>
-                                            <div class="bg-[#f2a60d] text-white rounded-full flex items-center justify-center aspect-square
-    cursor-pointer font-bold relative">
-                                                <span>16</span>
-                                                <div class="absolute -bottom-1 w-1 h-1 bg-[#f2a60d] rounded-full"></div>
-                                            </div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">17</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">18</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">19</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">20</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">21</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">22</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8] relative">
-                                                <span>23</span>
-                                                <div class="absolute -bottom-1 w-1 h-1 bg-[#f2a60d] rounded-full"></div>
-                                            </div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">24</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">25</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">26</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">27</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">28</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">29</div>
-                                            <div class="rounded-full flex items-center justify-center aspect-square cursor-pointer hover:bg-
-    [#fcfbf8]">30</div>
-                                        </div>
-                                        <div class="border-t border-stone-200 mt-4 pt-4">
-                                            <h4 class="font-semibold text-sm text-[#1c170d] mb-2">Events on this day:
-                                            </h4>
-                                            <div class="flex items-center gap-3">
-                                                <div class="w-2 h-2 rounded-full bg-[#f2a60d] flex-shrink-0"></div>
-                                                <p class="text-sm text-stone-600">Saga Dawa - Final Day</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-            <footer class="border-t border-solid border-t-[#f4efe7] mt-16">
-                <div class="container mx-auto px-4">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 py-10">
-                        <div class="flex items-center gap-3 text-[#1c170d]">
-                            <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
-
-                    <h2 class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">CodeMonks
-                    </h2>
-                        </div>
-                        <nav class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm font-medium text-
-    stone-600">
-                            <a class="hover:text-[#f2a60d] transition-colors" href="#">About Us</a>
-                            <a class="hover:text-[#f2a60d] transition-colors" href="#">Contact</a>
-                            <a class="hover:text-[#f2a60d] transition-colors" href="#">Privacy Policy</a>
-                            <a class="hover:text-[#f2a60d] transition-colors" href="#">Terms of Service</a>
-                        </nav>
-                        <div class="flex items-center gap-4 text-stone-500">
-                            <a class="hover:text-[#f2a60d] transition-colors" href="#">
-                                <svg class="feather feather-twitter" fill="none" height="24" stroke="currentColor"
-                                    stroke- linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                    width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-
-    7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-
-    .83A7.72 7.72 0 0 0 23 3z"></path>
-                                </svg>
-                            </a>
-                            <a class="hover:text-[#f2a60d] transition-colors" href="#">
-                                <svg class="feather feather-facebook" fill="none" height="24" stroke="currentColor"
-                                    stroke- linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                    width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-
-    4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </a>
-                            <a class="hover:text-[#f2a60d] transition-colors" href="#">
-                                <svg class="feather feather-instagram" fill="none" height="24" stroke="currentColor"
-                                    stroke- linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                    width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="py-6 text-center text-sm text-stone-500 border-t border-solid border-t-[#f4efe7]">
-                        <p>© 2025 CodeMonks. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
+  <div class="relative flex size-full min-h-screen flex-col" style="font-family: 'Noto Sans', sans-serif">
+    <div class="layout-container flex flex-col grow h-full">
+      <!-- Header -->
+      <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f4efe7] px-10 py-4">
+        <div class="flex items-center gap-3 text-[#1c170d]">
+          <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
+          <h2 class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">
+            <a class="hover:text-[#f2a60d] transition-colors" href="index.html">CodeMonks</a>
+          </h2>
         </div>
+        <div class="flex items-center gap-8">
+          <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#1c170d]">
+            <a class="hover:text-[#f2a60d] transition-colors" href="Events.html">Events</a>
+            <a class="font-bold text-[#f2a60d]" href="#">Archives</a>
+            <a class="hover:text-[#f2a60d] transition-colors" href="Monasteries.html">Monasteries</a>
+            <a class="hover:text-[#f2a60d] transition-colors" href="#">360° Views</a>
+            <a class="hover:text-[#f2a60d] transition-colors" href="Accommodations.html">Accommodations</a>
+          </nav>
+          <div class="flex items-center gap-2">
+            <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
+              <span class="material-symbols-outlined">search</span>
+            </button>
+            <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
+              <span class="material-symbols-outlined">language</span>
+            </button>
+            <button class="ml-2">
+              <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg");'></div>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="grow overflow-auto p-6 md:p-12 max-w-7xl mx-auto space-y-10">
+        <!-- Image Carousel hero -->
+        <section class="relative rounded-2xl overflow-hidden select-none">
+          <div id="carousel" class="relative">
+            <div class="carousel-item active relative w-full h-[500px] bg-center bg-cover"
+              style="background-image: url('https://lh3.googleusercontent.com/ABSA-9JE_12mQ5ucgkG2_zZU6TIepGxhfYyqfriupD7HAOtGcpD4p6NQWqUpSxE28M=w1920-h1080')">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
+                <h2 class="text-3xl font-serif font-bold">Saga Dawa Festival</h2>
+                <p class="mt-2 text-sm">Celebrating the birth, enlightenment, and nirvana of Buddha. Marked by
+                  devotional processions and lighting of butter lamps.</p>
+                <p class="mt-1 font-semibold">May 25 - June 23</p>
+              </div>
+            </div>
+
+            <div class="carousel-item relative w-full h-[500px] bg-center bg-cover"
+              style="background-image: url('https://lh3.googleusercontent.com/Auto8Gu-rvv3Jh6aLS62IcZ43Hx-H3yrDIxWFbNl_-_eiCeDEVk3h-9nj2WhYpglNgg=w1920-h1080')">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
+                <h2 class="text-3xl font-serif font-bold">Pang Lhabsol Festival</h2>
+                <p class="mt-2 text-sm">Honoring guardian deity Kanchenjunga with warrior dances, rituals, and
+                  cultural performances.</p>
+                <p class="mt-1 font-semibold">August 28</p>
+              </div>
+            </div>
+
+            <div class="carousel-item relative w-full h-[500px] bg-center bg-cover"
+              style="background-image: url('https://images.pexels.com/photos/33687825/pexels-photo-33687825.jpeg')">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
+                <h2 class="text-3xl font-serif font-bold">Flower Festival</h2>
+                <p class="mt-2 text-sm">A month-long celebration highlighting Sikkim’s spectacular flowers and
+                  folk culture.</p>
+                <p class="mt-1 font-semibold">April 1 - 30</p>
+              </div>
+            </div>
+
+            <button id="prevSlide" aria-label="Previous slide"
+              class="absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-white p-2 text-[#1c170d] hover:bg-gray-100 focus:outline-none">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button id="nextSlide" aria-label="Next slide"
+              class="absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-white p-2 text-[#1c170d] hover:bg-gray-100 focus:outline-none">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+
+            <div
+              class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/60 rounded-full px-3 py-1 shadow-lg">
+              <button class="w-3 h-3 rounded-full bg-white" data-slide="0" aria-label="Slide 1"></button>
+              <button class="w-3 h-3 rounded-full bg-white/50" data-slide="1" aria-label="Slide 2"></button>
+              <button class="w-3 h-3 rounded-full bg-white/50" data-slide="2" aria-label="Slide 3"></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section class="grid lg:grid-cols-2 gap-8">
+          <div>
+            <h2 class="text-[#1c170d] text-3xl font-serif font-bold mb-6">Upcoming Events</h2>
+            <div id="eventsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+          </div>
+
+          <!-- Calendar -->
+          <aside class="bg-white rounded-xl p-6 shadow-lg max-w-md sticky top-6 h-fit select-none" role="region"
+            aria-label="Event calendar">
+            <div class="flex justify-between items-center mb-4 select-none">
+              <button id="prevMonth" aria-label="Previous month"
+                class="p-2 rounded-full hover:bg-gray-100 focus:outline-none text-[#1c170d]">
+                <span class="material-symbols-outlined">chevron_left</span>
+              </button>
+              <h3 id="calendarMonthYear" class="text-xl font-serif font-bold text-[#1c170d]"></h3>
+              <button id="nextMonth" aria-label="Next month"
+                class="p-2 rounded-full hover:bg-gray-100 focus:outline-none text-[#1c170d]">
+                <span class="material-symbols-outlined">chevron_right</span>
+              </button>
+            </div>
+            <div class="grid grid-cols-7 text-center text-sm font-semibold text-gray-600">
+              <div>S</div>
+              <div>M</div>
+              <div>T</div>
+              <div>W</div>
+              <div>T</div>
+              <div>F</div>
+              <div>S</div>
+            </div>
+            <div id="calendarGrid" class="grid grid-cols-7 gap-2 mt-2 text-center text-[#1c170d]"></div>
+            <div id="eventsForDay" class="mt-6 hidden">
+              <h4 class="font-semibold mb-2">Events on <span id="selectedDateLabel"></span>:</h4>
+              <ul id="eventsForDayList" class="space-y-2"></ul>
+            </div>
+          </aside>
+        </section>
+      </main>
+
+      <!-- Modal -->
+      <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" role="dialog"
+        aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+        <div
+          class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg p-8 relative flex flex-col">
+          <button id="modalClose" aria-label="Close modal"
+            class="absolute right-3 top-3 w-10 h-10 rounded-full bg-red-600 text-white text-xl font-bold hover:bg-red-700 focus:outline-none leading-none">×</button>
+          <h2 id="modalTitle" class="font-serif font-bold text-3xl text-[#1c170d] mb-4"></h2>
+          <img id="modalImage" src="" alt="Event image" />
+          <table id="modalInfoTable" aria-label="Event details table">
+            <tbody>
+              <tr>
+                <th>Duration</th>
+                <td id="modalDuration"></td>
+              </tr>
+              <tr>
+                <th>Destination</th>
+                <td id="modalDestination"></td>
+              </tr>
+              <tr>
+                <th>History</th>
+                <td id="modalHistory"></td>
+              </tr>
+              <tr>
+                <th>Significance</th>
+                <td id="modalSignificance"></td>
+              </tr>
+            </tbody>
+          </table>
+          <p id="modalDesc" class="text-gray-700 mb-6 whitespace-pre-wrap"></p>
+          <div id="modalFeatures" class="mb-4 flex flex-wrap gap-3"></div>
+        </div>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const carousel = document.getElementById('carousel');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const dots = carousel.querySelectorAll('[data-slide]');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        let currentSlide = 0;
+
+        function updateSlide() {
+          items.forEach((item, idx) => {
+            item.classList.toggle('active', idx === currentSlide);
+            if (idx === currentSlide) item.classList.add('fade-in');
+            else item.classList.remove('fade-in');
+          });
+          dots.forEach((dot, idx) => {
+            dot.classList.toggle('bg-white', idx === currentSlide);
+            dot.classList.toggle('bg-white/50', idx !== currentSlide);
+          });
+        }
+
+        prevBtn.onclick = () => {
+          currentSlide = (currentSlide - 1 + items.length) % items.length;
+          updateSlide();
+        };
+
+        nextBtn.onclick = () => {
+          currentSlide = (currentSlide + 1) % items.length;
+          updateSlide();
+        };
+
+        dots.forEach((dot, idx) => {
+          dot.onclick = () => {
+            currentSlide = idx;
+            updateSlide();
+          };
+        });
+
+        updateSlide();
+        setInterval(() => {
+          currentSlide = (currentSlide + 1) % items.length;
+          updateSlide();
+        }, 7000);
+      })();
+
+      const events = [
+        {
+          id: 1,
+          title: "Saga Dawa Festival",
+          date: "2025-06-23",
+          duration: "May 25 - June 23",
+          destination: "All major monasteries, Sikkim",
+          history: "Commemorates Buddha’s birth, enlightenment and nirvana, deeply revered by Buddhist community.",
+          significance: "Final day includes a grand public Butter Lamp Festival, significant for merit making.",
+          description: "A month-long celebration marked by devotional prayers, religious processions, and illumination of lamps.",
+          features: ["Processions", "Butter Lamps", "Prayers", "Devotional Music"],
+          image: "https://lh3.googleusercontent.com/ABSA-9JE_12mQ5ucgkG2_zZU6TIepGxhfYyqfriupD7HAOtGcpD4p6NQWqUpSxE28M=w1920-h1080"
+        },
+        {
+          id: 2,
+          title: "Pang Lhabsol Festival",
+          date: "2025-08-28",
+          duration: "Aug 27-29",
+          destination: "Pemayangtse & Surrounding Monasteries",
+          history: "Origins in honoring guardian spirit of Mount Kanchenjunga, protector deity of Sikkim.",
+          significance: "Features ritual warrior dances invoking spiritual blessings and protection.",
+          description: "Three day grand ritual with traditional warrior dances, local community gatherings, and cultural fairs.",
+          features: ["Warrior Dances", "Ritual Prayers", "Community Feasts"],
+          image: "https://lh3.googleusercontent.com/Auto8Gu-rvv3Jh6aLS62IcZ43Hx-H3yrDIxWFbNl_-_eiCeDEVk3h-9nj2WhYpglNgg=w1920-h1080"
+        },
+        {
+          id: 3,
+          title: "Flower Festival",
+          date: "2025-04-01",
+          duration: "April 1 - 30",
+          destination: "Gangtok & Surrounding Valleys",
+          history: "Showcases the rich diversity of Sikkim’s flora, celebrating the blooming season.",
+          significance: "Popular among tourists and botanists for exotic orchids, rhododendrons and other blooms.",
+          description: "Month-long flower exhibitions, cultural performances, and handicraft stalls.",
+          features: ["Flower Shows", "Cultural Performances", "Artisan Stalls"],
+          image: "https://images.pexels.com/photos/33687825/pexels-photo-33687825.jpeg"
+        },
+        {
+          id: 4,
+          title: "Losar Festival",
+          date: "2025-02-10",
+          duration: "Feb 10-12",
+          destination: "All Buddhist Monasteries",
+          history: "Tibetan New Year, marked with prayers to usher in prosperity and happiness.",
+          significance: "Includes ritual dances, community feasts and religious ceremonies.",
+          description: "Festival with vibrant mask dances, musical performances and family reunions.",
+          features: ["Mask Dances", "Feasts", "Prayers", "Music"],
+          image: "https://lh3.googleusercontent.com/ABYT0BTX4CZwJLOVLQ5nWnoEi0eJXbIj6PG3WTbVyN7jjCnTKRHE0mjMmXBu9--eUg=w1920"
+        },
+        {
+          id: 5,
+          title: "Dasain (Durga Puja)",
+          date: "2025-10-03",
+          duration: "Oct 3 - 7",
+          destination: "Urban and rural areas of Sikkim",
+          history: "Longest Hindu festival celebrated to commemorate goddess Durga's victory over evil.",
+          significance: "Includes large gatherings, fasting, feasting, and worship rituals.",
+          description: "Family centric celebrations with music, dance, and traditional rituals.",
+          features: ["Religious Worship", "Family Gatherings", "Fasting & Feasting"],
+          image: "https://images.pexels.com/photos/1108540/pexels-photo-1108540.jpeg"
+        },
+        {
+          id: 6,
+          title: "Temi Cherry Blossom Festival",
+          date: "2025-11-14",
+          duration: "Mid-November",
+          destination: "Temi Tea Garden",
+          history: "Celebrates the blooming of cherry blossoms in Temi Tea Garden, unique to Sikkim.",
+          significance: "Tourists flock to witness spectacular cherry blossom views.",
+          description: "Festival offering cultural shows and guided tours around the tea garden.",
+          features: ["Cherry Blossoms", "Cultural Shows", "Guided Tours"],
+          image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Cherry_blossoms_Sikkim_India.JPG"
+        },
+        {
+          id: 7,
+          title: "Tendong Lho Rum Faat",
+          date: "2025-10-07",
+          duration: "Early October",
+          destination: "South Sikkim, Tendong Hill",
+          history: "Lepcha festival marking the end of famine, praying on Tendong Hill for prosperity.",
+          significance: "Pilgrimage and prayers on Tendong hilltop are main highlights.",
+          description: "Traditional Lepcha observances and cultural gatherings on Tendong hill.",
+          features: ["Pilgrimage", "Prayers", "Lepcha Traditions"],
+          image: "https://upload.wikimedia.org/wikipedia/commons/3/37/Tendong_Hill_Sikkim.JPG"
+        },
+        {
+          id: 8,
+          title: "Indrajatra",
+          date: "2025-09-13",
+          duration: "September (variable date)",
+          destination: "Newar community areas, Sikkim",
+          history: "Religious festival of Newar community traditionally involving masked dances and worship.",
+          significance: "Strengthens communal bonds within the Newar ethnic group.",
+          description: "Masked dances, rituals and feasts with deep religious significance.",
+          features: ["Masked Dances", "Rituals", "Community Feasts"],
+          image: "https://upload.wikimedia.org/wikipedia/commons/8/85/Indra_festival_Nepal.jpg"
+        },
+        {
+          id: 9,
+          title: "Buddha Jayanti",
+          date: "2025-05-26",
+          duration: "One day celebration",
+          destination: "Buddhist Monasteries across Sikkim",
+          history: "Marks the day Buddha gave his first sermon post-enlightenment.",
+          significance: "Celebrated with prayers, offerings and community gatherings.",
+          description: "Ceremonial prayers and teachings at monasteries with community participation.",
+          features: ["Prayers", "Offerings", "Teachings"],
+          image: "https://upload.wikimedia.org/wikipedia/commons/5/56/Buddha_Jayanti_Srilanka.jpg"
+        },
+        {
+          id: 10,
+          title: "Losoong (Bhutia & Lepcha New Year)",
+          date: "2025-12-28",
+          duration: "One day celebration",
+          destination: "Bhutia & Lepcha communities, Sikkim",
+          history: "Marks the traditional New Year for the Bhutia & Lepcha ethnic groups.",
+          significance: "Includes group dances, feasts, and cultural shows.",
+          description: "New Year celebrations with traditional dance, music and local cuisines.",
+          features: ["Group Dances", "Music", "Feasts"],
+          image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Losoong_Festival_Sikkim.jpg"
+        }
+      ];
+
+      let currentYear, currentMonth, eventsByDate = {};
+      const calendarGrid = document.getElementById("calendarGrid");
+      const monthYearLabel = document.getElementById("calendarMonthYear");
+      const eventsForDayDiv = document.getElementById("eventsForDay");
+      const eventsForDayList = document.getElementById("eventsForDayList");
+      const selectedDateLabel = document.getElementById("selectedDateLabel");
+
+      function mapEventsByDate() {
+        eventsByDate = {};
+        for (const e of events) {
+          if (!eventsByDate[e.date]) eventsByDate[e.date] = [];
+          eventsByDate[e.date].push(e);
+        }
+      }
+
+      function renderEvents() {
+        const container = document.getElementById("eventsContainer");
+        container.innerHTML = events.map(e => `
+          <article tabindex="0" class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col cursor-pointer">
+            <img class="w-full h-52 object-cover rounded-t-xl" src="${e.image}" alt="${e.title}" />
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-serif font-bold text-xl text-[#1c170d] mb-3">${e.title}</h3>
+              <p class="text-gray-700 flex-grow text-base">${e.description}</p>
+              <p class="text-[#d97706] mt-5 font-semibold text-lg">${new Date(e.date).toLocaleDateString()}</p>
+              <button class="mt-6 px-6 py-3 border border-[#f59e0b] text-[#f59e0b] rounded hover:bg-[#f59e0b] hover:text-white focus:outline-none text-lg" onclick="openEventModal(${e.id})">
+                Learn More
+              </button>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      function renderCalendar(year, month) {
+        let firstDay = new Date(year, month, 1);
+        let lastDay = new Date(year, month + 1, 0);
+        let startDay = firstDay.getDay();
+        let daysInMonth = lastDay.getDate();
+
+        currentYear = year;
+        currentMonth = month;
+
+        monthYearLabel.textContent = firstDay.toLocaleDateString("default", { month: "long", year: "numeric" });
+
+        calendarGrid.innerHTML = "";
+
+        for (let i = 0; i < startDay; i++) {
+          calendarGrid.insertAdjacentHTML("beforeend", `<div></div>`);
+        }
+
+        const today = new Date();
+        for (let day = 1; day <= daysInMonth; day++) {
+          let classes = [
+            "rounded-full",
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "cursor-pointer",
+            "hover:bg-[#f0ead0]",
+          ];
+
+          const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+          if (isToday) classes.push("bg-[#f59e0b]", "text-white", "font-semibold");
+
+          let dateStr = new Date(year, month, day).toISOString().slice(0, 10);
+          if (eventsByDate[dateStr]) {
+            classes.push("border-2", "border-[#f59e0b]");
+          }
+
+          calendarGrid.insertAdjacentHTML(
+            "beforeend",
+            `<div tabindex="0" class="${classes.join(" ")}" data-day="${day}">${day}</div>`
+          );
+        }
+        clearSelectedDateEvents();
+      }
+
+      function clearSelectedDateEvents() {
+        eventsForDayDiv.classList.add("hidden");
+        eventsForDayList.innerHTML = "";
+        selectedDateLabel.textContent = "";
+      }
+
+      calendarGrid.addEventListener("click", (e) => {
+        if (!e.target.dataset.day) return;
+        const day = parseInt(e.target.dataset.day);
+        const selectedDate = new Date(currentYear, currentMonth, day).toISOString().slice(0, 10);
+        showEventsOnDate(selectedDate, day);
+      });
+
+      calendarGrid.addEventListener("keydown", (e) => {
+        if ((e.key === "Enter" || e.key === " ") && e.target.dataset.day) {
+          e.preventDefault();
+          e.target.click();
+        }
+      });
+
+      function showEventsOnDate(dateISO, day) {
+        const dayEvents = eventsByDate[dateISO] || [];
+        if (dayEvents.length === 0) {
+          clearSelectedDateEvents();
+          return;
+        }
+        selectedDateLabel.textContent = new Date(currentYear, currentMonth, day).toLocaleDateString();
+        eventsForDayList.innerHTML = dayEvents
+          .map(
+            (e) =>
+              `<li tabindex="0" class="cursor-pointer hover:text-[#b45309]" onclick="openEventModal(${e.id})">${e.title}</li>`
+          )
+          .join("");
+        eventsForDayDiv.classList.remove("hidden");
+      }
+
+      function openEventModal(id) {
+        const event = events.find((e) => e.id === id);
+        if (!event) return;
+
+        document.getElementById("modalTitle").textContent = event.title;
+        document.getElementById("modalImage").src = event.image || "";
+        document.getElementById("modalImage").alt = event.title + " image";
+        document.getElementById("modalDuration").textContent = event.duration || "N/A";
+        document.getElementById("modalDestination").textContent = event.destination || "N/A";
+        document.getElementById("modalHistory").textContent = event.history || "N/A";
+        document.getElementById("modalSignificance").textContent = event.significance || "N/A";
+        document.getElementById("modalDesc").textContent = event.description || "";
+
+        if (event.features && event.features.length) {
+          document.getElementById(
+            "modalFeatures"
+          ).innerHTML = event.features.map((f) => `<span class="bg-[#f0ead0] text-[#b45309] rounded px-4 py-1 text-base"> ${f} </span>`).join("");
+        } else {
+          document.getElementById("modalFeatures").innerHTML = "";
+        }
+
+        document.getElementById("modal").classList.remove("hidden");
+        document.getElementById("modal").classList.add("flex");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        document.getElementById("modal").classList.add("hidden");
+        document.getElementById("modal").classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }
+
+      document.getElementById("modalClose").addEventListener("click", closeModal);
+      document.getElementById("modal").addEventListener("click", (e) => {
+        if (e.target === e.currentTarget) closeModal();
+      });
+
+      function init() {
+        renderEvents();
+        mapEventsByDate();
+        const today = new Date();
+        renderCalendar(today.getFullYear(), today.getMonth());
+      }
+
+      window.onload = init;
+    </script>
 </body>
 
 </html>
