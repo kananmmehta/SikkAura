@@ -6,7 +6,7 @@
   <title>Sikkim Events & Cultural Calendar</title>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&family=Noto+Sans:wght@400;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Noto+Sans:wght@400;700;900&amp;display=swap"
     rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -102,139 +102,201 @@
       color: #b45309;
       vertical-align: top;
     }
+
+    /* Search input styling and transition */
+    #search-input {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 2.5rem;
+      border-radius: 0.375rem;
+      border: 1px solid #d1d5db;
+      padding: 0 0.75rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      width: 200px;
+      background-color: white;
+      color: #1c170d;
+      font-size: 1rem;
+    }
   </style>
 </head>
 
 <body class="bg-[#fcfbf8]">
-  <div class="relative flex size-full min-h-screen flex-col" style="font-family: 'Noto Sans', sans-serif">
-    <div class="layout-container flex flex-col grow h-full">
+  <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden"
+    style="font-family: 'Noto Sans', sans-serif;">
+    <div class="layout-container flex h-full grow flex-col">
+
       <!-- Header -->
       <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f4efe7] px-10 py-4">
         <div class="flex items-center gap-3 text-[#1c170d]">
-          <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full">
+          <img src="assets/images/teamlogo.jpg" alt="Team Logo" class="h-20 w-20 inline-block rounded-full" />
           <h2 class="text-[#1c170d] text-xl font-bold leading-tight tracking-[-0.015em] font-serif">
             <a class="hover:text-[#f2a60d] transition-colors" href="index.html">CodeMonks</a>
           </h2>
         </div>
         <div class="flex items-center gap-8">
           <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#1c170d]">
-            <a class="hover:text-[#f2a60d] transition-colors" href="Events.html">Events</a>
-            <a class="font-bold text-[#f2a60d]" href="#">Archives</a>
+            <a class="text-[#f2a60d] font-bold" href="#">Events</a>
+            <a class="hover:text-[#f2a60d] transition-colors" href="Archives.html">Archives</a>
             <a class="hover:text-[#f2a60d] transition-colors" href="Monasteries.html">Monasteries</a>
             <a class="hover:text-[#f2a60d] transition-colors" href="#">360° Views</a>
             <a class="hover:text-[#f2a60d] transition-colors" href="Accommodations.html">Accommodations</a>
           </nav>
           <div class="flex items-center gap-2">
-            <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
-              <span class="material-symbols-outlined">search</span>
-            </button>
-            <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
-              <span class="material-symbols-outlined">language</span>
-            </button>
-            <button class="ml-2">
-              <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg");'></div>
+
+            <!-- Search button and input -->
+            <div class="relative">
+              <button id="search-toggle" title="Toggle search" class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
+                <span class="material-symbols-outlined">search</span>
+              </button>
+              <input id="search-input" type="text" placeholder="Search..." aria-label="Search" />
+            </div>
+
+            <!-- Language toggle dropdown -->
+            <div class="relative">
+              <button id="lang-toggle" title="Toggle Language Menu" class="flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-[#1c170d] hover:bg-[#f4efe7] transition-colors">
+                <span class="material-symbols-outlined">language</span>
+              </button>
+              <div id="lang-menu" class="absolute right-0 mt-2 w-28 rounded bg-white border border-gray-300 shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+                <button class="w-full px-4 py-2 hover:bg-gray-100 text-left" data-lang="en">English</button>
+                <button class="w-full px-4 py-2 hover:bg-gray-100 text-left" data-lang="hi">हिंदी</button>
+              </div>
+            </div>
+
+            <!-- Profile button triggers login/signup modal -->
+            <button class="ml-2" id="profile-button" title="Login / SignUp">
+              <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 cursor-pointer"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTAcs02BFLtsg5oej0377tTpdX_4JohRNOy9YRHq6-gpHpokQeGPqGFI6gkKDwSQhYqYNQwoTsXnxhMsrzCibaNrSeMhrWH8vtkrhDsx-cnF8_pAZ24T56cpKECyyfDGEuSqgmHNxl4TRZkyZP_Q0MdIEy3nlx43LO5HFtSlieAJFJFq8iaDGdeyHguc4rFfxttO9XcrpLh4FKCPs7nh6RrKKjqwRzwMd6H6k6N7a3ru8UPNljNV9yAyCzUT7wYubSgL5rhFGr3w");'>
+              </div>
             </button>
           </div>
         </div>
       </header>
 
-      <main class="grow overflow-auto p-6 md:p-12 max-w-7xl mx-auto space-y-10">
-        <!-- Image Carousel hero -->
-        <section class="relative rounded-2xl overflow-hidden select-none">
-          <div id="carousel" class="relative">
-            <div class="carousel-item active relative w-full h-[500px] bg-center bg-cover"
-              style="background-image: url('https://lh3.googleusercontent.com/ABSA-9JE_12mQ5ucgkG2_zZU6TIepGxhfYyqfriupD7HAOtGcpD4p6NQWqUpSxE28M=w1920-h1080')">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
-                <h2 class="text-3xl font-serif font-bold">Saga Dawa Festival</h2>
-                <p class="mt-2 text-sm">Celebrating the birth, enlightenment, and nirvana of Buddha. Marked by
-                  devotional processions and lighting of butter lamps.</p>
-                <p class="mt-1 font-semibold">May 25 - June 23</p>
-              </div>
-            </div>
+      <!-- Login/Signup modal -->
+      <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+        <div class="bg-white rounded-lg p-6 w-80 max-w-full mx-4">
+          <h2 class="text-xl font-bold mb-4">Login / Signup</h2>
+          <form>
+            <input type="email" placeholder="Email" class="w-full mb-3 border border-gray-300 rounded px-3 py-2" required />
+            <input type="password" placeholder="Password" class="w-full mb-3 border border-gray-300 rounded px-3 py-2" required />
+            <button type="submit" class="w-full bg-[#f2a60d] hover:bg-amber-400 text-[#1c170d] py-2 rounded font-bold">Login</button>
+          </form>
+          <button id="close-login-modal" class="mt-4 text-sm underline">Close</button>
+        </div>
+      </div>
 
-            <div class="carousel-item relative w-full h-[500px] bg-center bg-cover"
-              style="background-image: url('https://lh3.googleusercontent.com/Auto8Gu-rvv3Jh6aLS62IcZ43Hx-H3yrDIxWFbNl_-_eiCeDEVk3h-9nj2WhYpglNgg=w1920-h1080')">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
-                <h2 class="text-3xl font-serif font-bold">Pang Lhabsol Festival</h2>
-                <p class="mt-2 text-sm">Honoring guardian deity Kanchenjunga with warrior dances, rituals, and
-                  cultural performances.</p>
-                <p class="mt-1 font-semibold">August 28</p>
-              </div>
-            </div>
+      <main class="flex-1 px-4 md:px-10 lg:px-20 py-10 lg:py-16 max-w-[1440px] mx-auto flex flex-col flex-1">
+        <div class="flex flex-col gap-10">
 
-            <div class="carousel-item relative w-full h-[500px] bg-center bg-cover"
-              style="background-image: url('https://images.pexels.com/photos/33687825/pexels-photo-33687825.jpeg')">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
-                <h2 class="text-3xl font-serif font-bold">Flower Festival</h2>
-                <p class="mt-2 text-sm">A month-long celebration highlighting Sikkim’s spectacular flowers and
-                  folk culture.</p>
-                <p class="mt-1 font-semibold">April 1 - 30</p>
-              </div>
-            </div>
-
-            <button id="prevSlide" aria-label="Previous slide"
-              class="absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-white p-2 text-[#1c170d] hover:bg-gray-100 focus:outline-none">
-              <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-            <button id="nextSlide" aria-label="Next slide"
-              class="absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-white p-2 text-[#1c170d] hover:bg-gray-100 focus:outline-none">
-              <span class="material-symbols-outlined">chevron_right</span>
-            </button>
-
-            <div
-              class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/60 rounded-full px-3 py-1 shadow-lg">
-              <button class="w-3 h-3 rounded-full bg-white" data-slide="0" aria-label="Slide 1"></button>
-              <button class="w-3 h-3 rounded-full bg-white/50" data-slide="1" aria-label="Slide 2"></button>
-              <button class="w-3 h-3 rounded-full bg-white/50" data-slide="2" aria-label="Slide 3"></button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Upcoming Events Section -->
-        <section class="grid lg:grid-cols-2 gap-8">
-          <div>
-            <h2 class="text-[#1c170d] text-3xl font-serif font-bold mb-6">Upcoming Events</h2>
-            <div id="eventsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+          <div class="flex flex-col items-center text-center gap-4">
+            <h1 class="text-[#1c170d] text-4xl lg:text-5xl font-bold leading-tight tracking-tighter font-serif max-w-3xl">
+              Cultural Events &amp; Festivals
+            </h1>
+            <p class="text-stone-600 text-lg font-normal leading-relaxed max-w-3xl">
+              Immerse yourself in the vibrant traditions of Sikkim. Explore a calendar full of colorful festivals and cultural events that showcase the state's rich heritage.
+            </p>
           </div>
 
-          <!-- Calendar -->
-          <aside class="bg-white rounded-xl p-6 shadow-lg max-w-md sticky top-6 h-fit select-none" role="region"
-            aria-label="Event calendar">
-            <div class="flex justify-between items-center mb-4 select-none">
-              <button id="prevMonth" aria-label="Previous month"
-                class="p-2 rounded-full hover:bg-gray-100 focus:outline-none text-[#1c170d]">
+          <!-- Carousel Hero -->
+          <section class="relative rounded-2xl overflow-hidden select-none" aria-label="Event highlights carousel">
+            <div id="carousel" class="relative">
+              <div class="carousel-item active relative w-full h-[600px] bg-center bg-cover"
+                style="background-image: url('assets/images/saga-dawa main2.webp')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
+                  <h2 class="text-3xl font-bold font-serif text-orange-600 bg-orange-100 rounded-xl p-2 text-center">Saga Dawa Festival</h2>
+                  <p class="text-white/90 mt-2 max-w-2xl">
+                    A celebration of Buddha's birth, enlightenment, and nirvana. Witness colorful processions, prayers, and the lighting of butter lamps.
+                  </p>
+                  <p class="mt-2 font-semibold text-sm">Ongoing: May 25th - June 23rd</p>
+                </div>
+              </div>
+
+              <div class="carousel-item relative w-full h-[600px] bg-center bg-cover"
+                style="background-image: url('assets/images/Pang Lhabsol.jpg')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
+                  <h2 class="text-3xl font-bold font-serif text-orange-600 bg-orange-100 rounded-xl p-2 text-center">Pang Lhabsol Festival</h2>
+                  <p class="text-white/90 mt-2 max-w-2xl">Witness warrior dances and prayers honoring Mount Kanchenjunga, the guardian deity of Sikkim.</p>
+                  <p class="mt-2 font-semibold text-sm">August 28th, 2024</p>
+                </div>
+              </div>
+
+              <div class="carousel-item relative w-full h-[600px] bg-center bg-cover"
+                style="background-image: url('assets/images/Flower Festival.webp')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 text-white max-w-3xl">
+                  <h2 class="text-3xl font-bold font-serif text-orange-600 bg-orange-100 rounded-xl p-2 text-center">Flower Festival</h2>
+                  <p class="text-white/90 mt-2 max-w-2xl">
+                    A month-long extravaganza showcasing Sikkim's rich variety of flowers, including orchids and rhododendrons.
+                  </p>
+                  <p class="mt-2 font-semibold text-sm">April 1st - 30th, 2025</p>
+                </div>
+              </div>
+
+              <button id="prevSlide" aria-label="Previous slide"
+                class="absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-white p-2 text-[#1c170d] hover:bg-gray-100 focus:outline-none">
                 <span class="material-symbols-outlined">chevron_left</span>
               </button>
-              <h3 id="calendarMonthYear" class="text-xl font-serif font-bold text-[#1c170d]"></h3>
-              <button id="nextMonth" aria-label="Next month"
-                class="p-2 rounded-full hover:bg-gray-100 focus:outline-none text-[#1c170d]">
+              <button id="nextSlide" aria-label="Next slide"
+                class="absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-white p-2 text-[#1c170d] hover:bg-gray-100 focus:outline-none">
                 <span class="material-symbols-outlined">chevron_right</span>
               </button>
+
+              <div
+                class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/60 rounded-full px-3 py-1 shadow-lg">
+                <button class="w-3 h-3 rounded-full bg-white" data-slide="0" aria-label="Slide 1"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50" data-slide="1" aria-label="Slide 2"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50" data-slide="2" aria-label="Slide 3"></button>
+              </div>
             </div>
-            <div class="grid grid-cols-7 text-center text-sm font-semibold text-gray-600">
-              <div>S</div>
-              <div>M</div>
-              <div>T</div>
-              <div>W</div>
-              <div>T</div>
-              <div>F</div>
-              <div>S</div>
+          </section>
+
+          <!-- Upcoming Events and Calendar -->
+          <section class="grid lg:grid-cols-2 gap-8">
+            <div>
+              <h2 class="text-[#1c170d] text-3xl font-serif font-bold mb-6">Upcoming Events</h2>
+              <div id="eventsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
             </div>
-            <div id="calendarGrid" class="grid grid-cols-7 gap-2 mt-2 text-center text-[#1c170d]"></div>
-            <div id="eventsForDay" class="mt-6 hidden">
-              <h4 class="font-semibold mb-2">Events on <span id="selectedDateLabel"></span>:</h4>
-              <ul id="eventsForDayList" class="space-y-2"></ul>
-            </div>
-          </aside>
-        </section>
+
+            <aside class="bg-white rounded-xl p-6 shadow-lg max-w-md sticky top-6 h-fit select-none" role="region"
+              aria-label="Event calendar">
+              <div class="flex justify-between items-center mb-4 select-none">
+                <button id="prevMonth" aria-label="Previous month"
+                  class="p-2 rounded-full hover:bg-gray-100 focus:outline-none text-[#1c170d]">
+                  <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <h3 id="calendarMonthYear" class="text-xl font-serif font-bold text-[#1c170d]"></h3>
+                <button id="nextMonth" aria-label="Next month"
+                  class="p-2 rounded-full hover:bg-gray-100 focus:outline-none text-[#1c170d]">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+              </div>
+              <div class="grid grid-cols-7 text-center text-sm font-semibold text-gray-600">
+                <div>S</div>
+                <div>M</div>
+                <div>T</div>
+                <div>W</div>
+                <div>T</div>
+                <div>F</div>
+                <div>S</div>
+              </div>
+              <div id="calendarGrid" class="grid grid-cols-7 gap-2 mt-2 text-center text-[#1c170d]"></div>
+              <div id="eventsForDay" class="mt-6 hidden">
+                <h4 class="font-semibold mb-2">Events on <span id="selectedDateLabel"></span>:</h4>
+                <ul id="eventsForDayList" class="space-y-2"></ul>
+              </div>
+            </aside>
+          </section>
+        </div>
       </main>
 
-      <!-- Modal -->
-      <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" role="dialog"
-        aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <!-- Event Details Modal -->
+      <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" role="dialog" aria-modal="true"
+        aria-labelledby="modalTitle" aria-describedby="modalDesc">
         <div
           class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg p-8 relative flex flex-col">
           <button id="modalClose" aria-label="Close modal"
@@ -265,287 +327,407 @@
           <div id="modalFeatures" class="mb-4 flex flex-wrap gap-3"></div>
         </div>
       </div>
+
     </div>
+  </div>
 
-    <script>
-      (function () {
-        const carousel = document.getElementById('carousel');
-        const items = carousel.querySelectorAll('.carousel-item');
-        const dots = carousel.querySelectorAll('[data-slide]');
-        const prevBtn = document.getElementById('prevSlide');
-        const nextBtn = document.getElementById('nextSlide');
-        let currentSlide = 0;
+  <script>
+    // Carousel
+    (function () {
+      const carousel = document.getElementById('carousel');
+      const items = carousel.querySelectorAll('.carousel-item');
+      const dots = carousel.querySelectorAll('[data-slide]');
+      const prevBtn = document.getElementById('prevSlide');
+      const nextBtn = document.getElementById('nextSlide');
+      let currentSlide = 0;
 
-        function updateSlide() {
-          items.forEach((item, idx) => {
-            item.classList.toggle('active', idx === currentSlide);
-            if (idx === currentSlide) item.classList.add('fade-in');
-            else item.classList.remove('fade-in');
-          });
-          dots.forEach((dot, idx) => {
-            dot.classList.toggle('bg-white', idx === currentSlide);
-            dot.classList.toggle('bg-white/50', idx !== currentSlide);
-          });
-        }
-
-        prevBtn.onclick = () => {
-          currentSlide = (currentSlide - 1 + items.length) % items.length;
-          updateSlide();
-        };
-
-        nextBtn.onclick = () => {
-          currentSlide = (currentSlide + 1) % items.length;
-          updateSlide();
-        };
-
-        dots.forEach((dot, idx) => {
-          dot.onclick = () => {
-            currentSlide = idx;
-            updateSlide();
-          };
+      function updateSlide() {
+        items.forEach((item, idx) => {
+          item.classList.toggle('active', idx === currentSlide);
+          if (idx === currentSlide) item.classList.add('fade-in');
+          else item.classList.remove('fade-in');
         });
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('bg-white', idx === currentSlide);
+          dot.classList.toggle('bg-white/50', idx !== currentSlide);
+        });
+      }
 
+      prevBtn.onclick = () => {
+        currentSlide = (currentSlide - 1 + items.length) % items.length;
         updateSlide();
-        setInterval(() => {
-          currentSlide = (currentSlide + 1) % items.length;
+      };
+
+      nextBtn.onclick = () => {
+        currentSlide = (currentSlide + 1) % items.length;
+        updateSlide();
+      };
+
+      dots.forEach((dot, idx) => {
+        dot.onclick = () => {
+          currentSlide = idx;
           updateSlide();
-        }, 7000);
-      })();
+        };
+      });
 
-      const events = [
-        {
-          id: 1,
-          title: "Saga Dawa Festival",
-          date: "2025-06-23",
-          duration: "May 25 - June 23",
-          destination: "All major monasteries, Sikkim",
-          history: "Commemorates Buddha’s birth, enlightenment and nirvana, deeply revered by Buddhist community.",
-          significance: "Final day includes a grand public Butter Lamp Festival, significant for merit making.",
-          description: "A month-long celebration marked by devotional prayers, religious processions, and illumination of lamps.",
-          features: ["Processions", "Butter Lamps", "Prayers", "Devotional Music"],
-          image: "https://lh3.googleusercontent.com/ABSA-9JE_12mQ5ucgkG2_zZU6TIepGxhfYyqfriupD7HAOtGcpD4p6NQWqUpSxE28M=w1920-h1080"
-        },
-        {
-          id: 2,
-          title: "Pang Lhabsol Festival",
-          date: "2025-08-28",
-          duration: "Aug 27-29",
-          destination: "Pemayangtse & Surrounding Monasteries",
-          history: "Origins in honoring guardian spirit of Mount Kanchenjunga, protector deity of Sikkim.",
-          significance: "Features ritual warrior dances invoking spiritual blessings and protection.",
-          description: "Three day grand ritual with traditional warrior dances, local community gatherings, and cultural fairs.",
-          features: ["Warrior Dances", "Ritual Prayers", "Community Feasts"],
-          image: "https://lh3.googleusercontent.com/Auto8Gu-rvv3Jh6aLS62IcZ43Hx-H3yrDIxWFbNl_-_eiCeDEVk3h-9nj2WhYpglNgg=w1920-h1080"
-        },
-        {
-          id: 3,
-          title: "Flower Festival",
-          date: "2025-04-01",
-          duration: "April 1 - 30",
-          destination: "Gangtok & Surrounding Valleys",
-          history: "Showcases the rich diversity of Sikkim’s flora, celebrating the blooming season.",
-          significance: "Popular among tourists and botanists for exotic orchids, rhododendrons and other blooms.",
-          description: "Month-long flower exhibitions, cultural performances, and handicraft stalls.",
-          features: ["Flower Shows", "Cultural Performances", "Artisan Stalls"],
-          image: "https://images.pexels.com/photos/33687825/pexels-photo-33687825.jpeg"
-        },
-        {
-          id: 4,
-          title: "Losar Festival",
-          date: "2025-02-10",
-          duration: "Feb 10-12",
-          destination: "All Buddhist Monasteries",
-          history: "Tibetan New Year, marked with prayers to usher in prosperity and happiness.",
-          significance: "Includes ritual dances, community feasts and religious ceremonies.",
-          description: "Festival with vibrant mask dances, musical performances and family reunions.",
-          features: ["Mask Dances", "Feasts", "Prayers", "Music"],
-          image: "https://lh3.googleusercontent.com/ABYT0BTX4CZwJLOVLQ5nWnoEi0eJXbIj6PG3WTbVyN7jjCnTKRHE0mjMmXBu9--eUg=w1920"
-        },
-        {
-          id: 5,
-          title: "Dasain (Durga Puja)",
-          date: "2025-10-03",
-          duration: "Oct 3 - 7",
-          destination: "Urban and rural areas of Sikkim",
-          history: "Longest Hindu festival celebrated to commemorate goddess Durga's victory over evil.",
-          significance: "Includes large gatherings, fasting, feasting, and worship rituals.",
-          description: "Family centric celebrations with music, dance, and traditional rituals.",
-          features: ["Religious Worship", "Family Gatherings", "Fasting & Feasting"],
-          image: "https://images.pexels.com/photos/1108540/pexels-photo-1108540.jpeg"
-        },
-        {
-          id: 6,
-          title: "Temi Cherry Blossom Festival",
-          date: "2025-11-14",
-          duration: "Mid-November",
-          destination: "Temi Tea Garden",
-          history: "Celebrates the blooming of cherry blossoms in Temi Tea Garden, unique to Sikkim.",
-          significance: "Tourists flock to witness spectacular cherry blossom views.",
-          description: "Festival offering cultural shows and guided tours around the tea garden.",
-          features: ["Cherry Blossoms", "Cultural Shows", "Guided Tours"],
-          image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Cherry_blossoms_Sikkim_India.JPG"
-        }
-      ];
+      updateSlide();
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % items.length;
+        updateSlide();
+      }, 7000);
+    })();
 
-      let currentYear, currentMonth, eventsByDate = {};
-      const calendarGrid = document.getElementById("calendarGrid");
-      const monthYearLabel = document.getElementById("calendarMonthYear");
-      const eventsForDayDiv = document.getElementById("eventsForDay");
-      const eventsForDayList = document.getElementById("eventsForDayList");
-      const selectedDateLabel = document.getElementById("selectedDateLabel");
+    const events = [
+      {
+        id: 1,
+        title: "Saga Dawa Festival",
+        date: "2025-06-23",
+        duration: "May 25 - June 23",
+        destination: "All major monasteries, Sikkim",
+        history: "Commemorates Buddha’s birth, enlightenment and nirvana, deeply revered by Buddhist community.",
+        significance: "Final day includes a grand public Butter Lamp Festival, significant for merit making.",
+        description: "A month-long celebration marked by devotional prayers, religious processions, and illumination of lamps.",
+        features: ["Processions", "Butter Lamps", "Prayers", "Devotional Music"],
+        image: "https://lh3.googleusercontent.com/ABSA-9JE_12mQ5ucgkG2_zZU6TIepGxhfYyqfriupD7HAOtGcpD4p6NQWqUpSxE28M=w1920-h1080"
+      },
+      {
+        id: 2,
+        title: "Pang Lhabsol Festival",
+        date: "2025-08-28",
+        duration: "Aug 27-29",
+        destination: "Pemayangtse & Surrounding Monasteries",
+        history: "Origins in honoring guardian spirit of Mount Kanchenjunga, protector deity of Sikkim.",
+        significance: "Features ritual warrior dances invoking spiritual blessings and protection.",
+        description: "Three day grand ritual with traditional warrior dances, local community gatherings, and cultural fairs.",
+        features: ["Warrior Dances", "Ritual Prayers", "Community Feasts"],
+        image: "https://lh3.googleusercontent.com/Auto8Gu-rvv3Jh6aLS62IcZ43Hx-H3yrDIxWFbNl_-_eiCeDEVk3h-9nj2WhYpglNgg=w1920-h1080"
+      },
+      {
+        id: 3,
+        title: "Flower Festival",
+        date: "2025-04-01",
+        duration: "April 1 - 30",
+        destination: "Gangtok & Surrounding Valleys",
+        history: "Showcases the rich diversity of Sikkim’s flora, celebrating the blooming season.",
+        significance: "Popular among tourists and botanists for exotic orchids, rhododendrons and other blooms.",
+        description: "Month-long flower exhibitions, cultural performances, and handicraft stalls.",
+        features: ["Flower Shows", "Cultural Performances", "Artisan Stalls"],
+        image: "https://images.pexels.com/photos/33687825/pexels-photo-33687825.jpeg"
+      },
+      {
+        id: 4,
+        title: "Losar Festival",
+        date: "2025-02-10",
+        duration: "Feb 10-12",
+        destination: "All Buddhist Monasteries",
+        history: "Tibetan New Year, marked with prayers to usher in prosperity and happiness.",
+        significance: "Includes ritual dances, community feasts and religious ceremonies.",
+        description: "Festival with vibrant mask dances, musical performances and family reunions.",
+        features: ["Mask Dances", "Feasts", "Prayers", "Music"],
+        image: "https://lh3.googleusercontent.com/ABYT0BTX4CZwJLOVLQ5nWnoEi0eJXbIj6PG3WTbVyN7jjCnTKRHE0mjMmXBu9--eUg=w1920"
+      },
+      {
+        id: 5,
+        title: "Dasain (Durga Puja)",
+        date: "2025-10-03",
+        duration: "Oct 3 - 7",
+        destination: "Urban and rural areas of Sikkim",
+        history: "Longest Hindu festival celebrated to commemorate goddess Durga's victory over evil.",
+        significance: "Includes large gatherings, fasting, feasting, and worship rituals.",
+        description: "Family centric celebrations with music, dance, and traditional rituals.",
+        features: ["Religious Worship", "Family Gatherings", "Fasting & Feasting"],
+        image: "https://images.pexels.com/photos/1108540/pexels-photo-1108540.jpeg"
+      },
+      {
+        id: 6,
+        title: "Temi Cherry Blossom Festival",
+        date: "2025-11-14",
+        duration: "Mid-November",
+        destination: "Temi Tea Garden",
+        history: "Celebrates the blooming of cherry blossoms in Temi Tea Garden, unique to Sikkim.",
+        significance: "Tourists flock to witness spectacular cherry blossom views.",
+        description: "Festival offering cultural shows and guided tours around the tea garden.",
+        features: ["Cherry Blossoms", "Cultural Shows", "Guided Tours"],
+        image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Cherry_blossoms_Sikkim_India.JPG"
+      },
+      {
+        id: 7,
+        title: "Tendong Lho Rum Faat",
+        date: "2025-10-07",
+        duration: "Early October",
+        destination: "South Sikkim, Tendong Hill",
+        history: "Lepcha festival marking the end of famine, praying on Tendong Hill for prosperity.",
+        significance: "Pilgrimage and prayers on Tendong hilltop are main highlights.",
+        description: "Traditional Lepcha observances and cultural gatherings on Tendong hill.",
+        features: ["Pilgrimage", "Prayers", "Lepcha Traditions"],
+        image: "https://upload.wikimedia.org/wikipedia/commons/3/37/Tendong_Hill_Sikkim.JPG"
+      },
+      {
+        id: 8,
+        title: "Indrajatra",
+        date: "2025-09-13",
+        duration: "September (variable date)",
+        destination: "Newar community areas, Sikkim",
+        history: "Religious festival of Newar community traditionally involving masked dances and worship.",
+        significance: "Strengthens communal bonds within the Newar ethnic group.",
+        description: "Masked dances, rituals and feasts with deep religious significance.",
+        features: ["Masked Dances", "Rituals", "Community Feasts"],
+        image: "https://upload.wikimedia.org/wikipedia/commons/8/85/Indra_festival_Nepal.jpg"
+      },
+      {
+        id: 9,
+        title: "Buddha Jayanti",
+        date: "2025-05-26",
+        duration: "One day celebration",
+        destination: "Buddhist Monasteries across Sikkim",
+        history: "Marks the day Buddha gave his first sermon post-enlightenment.",
+        significance: "Celebrated with prayers, offerings and community gatherings.",
+        description: "Ceremonial prayers and teachings at monasteries with community participation.",
+        features: ["Prayers", "Offerings", "Teachings"],
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/56/Buddha_Jayanti_Srilanka.jpg"
+      },
+      {
+        id: 10,
+        title: "Losoong (Bhutia & Lepcha New Year)",
+        date: "2025-12-28",
+        duration: "One day celebration",
+        destination: "Bhutia & Lepcha communities, Sikkim",
+        history: "Marks the traditional New Year for the Bhutia & Lepcha ethnic groups.",
+        significance: "Includes group dances, feasts, and cultural shows.",
+        description: "New Year celebrations with traditional dance, music and local cuisines.",
+        features: ["Group Dances", "Music", "Feasts"],
+        image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Losoong_Festival_Sikkim.jpg"
+      }
+    ];
 
-      function mapEventsByDate() {
-        eventsByDate = {};
-        for (const e of events) {
-          if (!eventsByDate[e.date]) eventsByDate[e.date] = [];
-          eventsByDate[e.date].push(e);
-        }
+    let currentYear, currentMonth, eventsByDate = {};
+    const calendarGrid = document.getElementById("calendarGrid");
+    const monthYearLabel = document.getElementById("calendarMonthYear");
+    const eventsForDayDiv = document.getElementById("eventsForDay");
+    const eventsForDayList = document.getElementById("eventsForDayList");
+    const selectedDateLabel = document.getElementById("selectedDateLabel");
+
+    // Map events by date for quick lookup
+    function mapEventsByDate() {
+      eventsByDate = {};
+      for (const e of events) {
+        if (!eventsByDate[e.date]) eventsByDate[e.date] = [];
+        eventsByDate[e.date].push(e);
+      }
+    }
+
+    // Render the event cards inside #eventsContainer
+    function renderEvents() {
+      const container = document.getElementById("eventsContainer");
+      container.innerHTML = events.map(e => `
+        <article tabindex="0" class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col cursor-pointer">
+          <img class="w-full h-52 object-cover rounded-t-xl" src="${e.image}" alt="${e.title}" />
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="font-serif font-bold text-xl text-[#1c170d] mb-3">${e.title}</h3>
+            <p class="text-gray-700 flex-grow text-base">${e.description}</p>
+            <p class="text-[#d97706] mt-5 font-semibold text-lg">${new Date(e.date).toLocaleDateString()}</p>
+            <button class="mt-6 px-6 py-3 border border-[#f59e0b] text-[#f59e0b] rounded hover:bg-[#f59e0b] hover:text-white focus:outline-none text-lg" onclick="openEventModal(${e.id})">
+              Learn More
+            </button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    // Render the calendar for given year and month
+    function renderCalendar(year, month) {
+      let firstDay = new Date(year, month, 1);
+      let lastDay = new Date(year, month + 1, 0);
+      let startDay = firstDay.getDay();
+      let daysInMonth = lastDay.getDate();
+
+      currentYear = year;
+      currentMonth = month;
+
+      monthYearLabel.textContent = firstDay.toLocaleDateString("default", { month: "long", year: "numeric" });
+
+      calendarGrid.innerHTML = "";
+
+      for (let i = 0; i < startDay; i++) {
+        calendarGrid.insertAdjacentHTML("beforeend", `<div></div>`);
       }
 
-      function renderEvents() {
-        const container = document.getElementById("eventsContainer");
-        container.innerHTML = events.map(e => `
-          <article tabindex="0" class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col cursor-pointer">
-            <img class="w-full h-52 object-cover rounded-t-xl" src="${e.image}" alt="${e.title}" />
-            <div class="p-6 flex-1 flex flex-col">
-              <h3 class="font-serif font-bold text-xl text-[#1c170d] mb-3">${e.title}</h3>
-              <p class="text-gray-700 flex-grow text-base">${e.description}</p>
-              <p class="text-[#d97706] mt-5 font-semibold text-lg">${new Date(e.date).toLocaleDateString()}</p>
-              <button class="mt-6 px-6 py-3 border border-[#f59e0b] text-[#f59e0b] rounded hover:bg-[#f59e0b] hover:text-white focus:outline-none text-lg" onclick="openEventModal(${e.id})">
-                Learn More
-              </button>
-            </div>
-          </article>
-        `).join("");
+      const today = new Date();
+      for (let day = 1; day <= daysInMonth; day++) {
+        let classes = [
+          "rounded-full",
+          "aspect-square",
+          "flex",
+          "items-center",
+          "justify-center",
+          "cursor-pointer",
+          "hover:bg-[#f0ead0]",
+        ];
+
+        const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+        if (isToday) classes.push("bg-[#f59e0b]", "text-white", "font-semibold");
+
+        let dateStr = new Date(year, month, day).toISOString().slice(0, 10);
+        if (eventsByDate[dateStr]) {
+          classes.push("border-2", "border-[#f59e0b]");
+        }
+
+        calendarGrid.insertAdjacentHTML(
+          "beforeend",
+          `<div tabindex="0" class="${classes.join(" ")}" data-day="${day}">${day}</div>`
+        );
       }
+      clearSelectedDateEvents();
+    }
 
-      function renderCalendar(year, month) {
-        let firstDay = new Date(year, month, 1);
-        let lastDay = new Date(year, month + 1, 0);
-        let startDay = firstDay.getDay();
-        let daysInMonth = lastDay.getDate();
+    // Clear events list for selected date
+    function clearSelectedDateEvents() {
+      eventsForDayDiv.classList.add("hidden");
+      eventsForDayList.innerHTML = "";
+      selectedDateLabel.textContent = "";
+    }
 
-        currentYear = year;
-        currentMonth = month;
-
-        monthYearLabel.textContent = firstDay.toLocaleDateString("default", { month: "long", year: "numeric" });
-
-        calendarGrid.innerHTML = "";
-
-        for (let i = 0; i < startDay; i++) {
-          calendarGrid.insertAdjacentHTML("beforeend", `<div></div>`);
-        }
-
-        const today = new Date();
-        for (let day = 1; day <= daysInMonth; day++) {
-          let classes = [
-            "rounded-full",
-            "aspect-square",
-            "flex",
-            "items-center",
-            "justify-center",
-            "cursor-pointer",
-            "hover:bg-[#f0ead0]",
-          ];
-
-          const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
-          if (isToday) classes.push("bg-[#f59e0b]", "text-white", "font-semibold");
-
-          let dateStr = new Date(year, month, day).toISOString().slice(0, 10);
-          if (eventsByDate[dateStr]) {
-            classes.push("border-2", "border-[#f59e0b]");
-          }
-
-          calendarGrid.insertAdjacentHTML(
-            "beforeend",
-            `<div tabindex="0" class="${classes.join(" ")}" data-day="${day}">${day}</div>`
-          );
-        }
+    // Show events on the selected date in the calendar
+    function showEventsOnDate(dateISO, day) {
+      const dayEvents = eventsByDate[dateISO] || [];
+      if (dayEvents.length === 0) {
         clearSelectedDateEvents();
+        return;
+      }
+      selectedDateLabel.textContent = new Date(currentYear, currentMonth, day).toLocaleDateString();
+      eventsForDayList.innerHTML = dayEvents
+        .map(
+          (e) => `<li tabindex="0" class="cursor-pointer hover:text-[#b45309]" onclick="openEventModal(${e.id})">${e.title}</li>`
+        )
+        .join("");
+      eventsForDayDiv.classList.remove("hidden");
+    }
+
+    // Open modal with event details
+    function openEventModal(id) {
+      const event = events.find((e) => e.id === id);
+      if (!event) return;
+
+      document.getElementById("modalTitle").textContent = event.title;
+      document.getElementById("modalImage").src = event.image || "";
+      document.getElementById("modalImage").alt = event.title + " image";
+      document.getElementById("modalDuration").textContent = event.duration || "N/A";
+      document.getElementById("modalDestination").textContent = event.destination || "N/A";
+      document.getElementById("modalHistory").textContent = event.history || "N/A";
+      document.getElementById("modalSignificance").textContent = event.significance || "N/A";
+      document.getElementById("modalDesc").textContent = event.description || "";
+
+      if (event.features && event.features.length) {
+        document.getElementById(
+          "modalFeatures"
+        ).innerHTML = event.features.map((f) => `<span class="bg-[#f0ead0] text-[#b45309] rounded px-4 py-1 text-base"> ${f} </span>`).join("");
+      } else {
+        document.getElementById("modalFeatures").innerHTML = "";
       }
 
-      function clearSelectedDateEvents() {
-        eventsForDayDiv.classList.add("hidden");
-        eventsForDayList.innerHTML = "";
-        selectedDateLabel.textContent = "";
-      }
+      document.getElementById("modal").classList.remove("hidden");
+      document.getElementById("modal").classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
 
-      calendarGrid.addEventListener("click", (e) => {
-        if (!e.target.dataset.day) return;
-        const day = parseInt(e.target.dataset.day);
-        const selectedDate = new Date(currentYear, currentMonth, day).toISOString().slice(0, 10);
-        showEventsOnDate(selectedDate, day);
+    // Close modal
+    function closeModal() {
+      document.getElementById("modal").classList.add("hidden");
+      document.getElementById("modal").classList.remove("flex");
+      document.body.style.overflow = "auto";
+    }
+
+    document.getElementById("modalClose").addEventListener("click", closeModal);
+    document.getElementById("modal").addEventListener("click", (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    // Calendar day click handlers
+    document.getElementById("calendarGrid").addEventListener("click", (e) => {
+      if (!e.target.dataset.day) return;
+      const day = parseInt(e.target.dataset.day);
+      const selectedDate = new Date(currentYear, currentMonth, day).toISOString().slice(0, 10);
+      showEventsOnDate(selectedDate, day);
+    });
+
+    document.getElementById("calendarGrid").addEventListener("keydown", (e) => {
+      if ((e.key === "Enter" || e.key === " ") && e.target.dataset.day) {
+        e.preventDefault();
+        e.target.click();
+      }
+    });
+
+    // Calendar month navigation
+    document.getElementById("prevMonth").addEventListener("click", () => {
+      let newMonth = currentMonth - 1;
+      let newYear = currentYear;
+      if (newMonth < 0) {
+        newMonth = 11;
+        newYear--;
+      }
+      renderCalendar(newYear, newMonth);
+    });
+
+    document.getElementById("nextMonth").addEventListener("click", () => {
+      let newMonth = currentMonth + 1;
+      let newYear = currentYear;
+      if (newMonth > 11) {
+        newMonth = 0;
+        newYear++;
+      }
+      renderCalendar(newYear, newMonth);
+    });
+
+    // Search bar toggle
+    const searchToggle = document.getElementById('search-toggle');
+    const searchInput = document.getElementById('search-input');
+    searchToggle.addEventListener('click', () => {
+      const isVisible = searchInput.style.opacity === '1';
+      searchInput.style.opacity = isVisible ? '0' : '1';
+      searchInput.style.pointerEvents = isVisible ? 'none' : 'auto';
+      if (!isVisible) searchInput.focus();
+    });
+
+    // Language toggle menu
+    const langToggle = document.getElementById('lang-toggle');
+    const langMenu = document.getElementById('lang-menu');
+    langToggle.addEventListener('click', () => {
+      const isVisible = langMenu.style.opacity === '1';
+      langMenu.style.opacity = isVisible ? '0' : '1';
+      langMenu.style.pointerEvents = isVisible ? 'none' : 'auto';
+    });
+    langMenu.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang');
+        alert(`Language switched to: ${lang}`); // Replace with real localization logic
+        langMenu.style.opacity = '0';
+        langMenu.style.pointerEvents = 'none';
       });
+    });
 
-      calendarGrid.addEventListener("keydown", (e) => {
-        if ((e.key === "Enter" || e.key === " ") && e.target.dataset.day) {
-          e.preventDefault();
-          e.target.click();
-        }
-      });
+    // Login/signup modal toggle
+    const profileButton = document.getElementById('profile-button');
+    const loginModal = document.getElementById('login-modal');
+    const closeLoginModalBtn = document.getElementById('close-login-modal');
+    profileButton.addEventListener('click', () => {
+      loginModal.style.opacity = '1';
+      loginModal.style.pointerEvents = 'auto';
+    });
+    closeLoginModalBtn.addEventListener('click', () => {
+      loginModal.style.opacity = '0';
+      loginModal.style.pointerEvents = 'none';
+    });
 
-      function showEventsOnDate(dateISO, day) {
-        const dayEvents = eventsByDate[dateISO] || [];
-        if (dayEvents.length === 0) {
-          clearSelectedDateEvents();
-          return;
-        }
-        selectedDateLabel.textContent = new Date(currentYear, currentMonth, day).toLocaleDateString();
-        eventsForDayList.innerHTML = dayEvents
-          .map(
-            (e) =>
-              `<li tabindex="0" class="cursor-pointer hover:text-[#b45309]" onclick="openEventModal(${e.id})">${e.title}</li>`
-          )
-          .join("");
-        eventsForDayDiv.classList.remove("hidden");
-      }
+    // Initialization on page load
+    function init() {
+      renderEvents();
+      mapEventsByDate();
+      const today = new Date();
+      renderCalendar(today.getFullYear(), today.getMonth());
+    }
 
-      function openEventModal(id) {
-        const event = events.find((e) => e.id === id);
-        if (!event) return;
-
-        document.getElementById("modalTitle").textContent = event.title;
-        document.getElementById("modalImage").src = event.image || "";
-        document.getElementById("modalImage").alt = event.title + " image";
-        document.getElementById("modalDuration").textContent = event.duration || "N/A";
-        document.getElementById("modalDestination").textContent = event.destination || "N/A";
-        document.getElementById("modalHistory").textContent = event.history || "N/A";
-        document.getElementById("modalSignificance").textContent = event.significance || "N/A";
-        document.getElementById("modalDesc").textContent = event.description || "";
-
-        if (event.features && event.features.length) {
-          document.getElementById(
-            "modalFeatures"
-          ).innerHTML = event.features.map((f) => `<span class="bg-[#f0ead0] text-[#b45309] rounded px-4 py-1 text-base"> ${f} </span>`).join("");
-        } else {
-          document.getElementById("modalFeatures").innerHTML = "";
-        }
-
-        document.getElementById("modal").classList.remove("hidden");
-        document.getElementById("modal").classList.add("flex");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeModal() {
-        document.getElementById("modal").classList.add("hidden");
-        document.getElementById("modal").classList.remove("flex");
-        document.body.style.overflow = "auto";
-      }
-
-      document.getElementById("modalClose").addEventListener("click", closeModal);
-      document.getElementById("modal").addEventListener("click", (e) => {
-        if (e.target === e.currentTarget) closeModal();
-      });
-
-      function init() {
-        renderEvents();
-        mapEventsByDate();
-        const today = new Date();
-        renderCalendar(today.getFullYear(), today.getMonth());
-      }
-
-      window.onload = init;
-    </script>
+    window.onload = init;
+  </script>
 </body>
 
 </html>
